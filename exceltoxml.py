@@ -4,8 +4,11 @@
 import sys
 import os
 import xlrd
-from xml.dom.minidom import Document
+import re
+import xml.dom.minidom
 
+
+LANGUAGE_TYPE = ["en","th","pt","es","zh-cn"]
 class EasyExcel:
   """docstring for EasyExcel"""
   def __init__(self, fileName):
@@ -23,10 +26,36 @@ class EasyExcel:
   def setSheet(self, sheetName):
     return self.xlBook.sheet_by_name(sheetName)
 
+
+def matchString(parttern, str):
+  match = parttern.search(str)
+  if match:
+    return match.group(1)
+  return ""
+
+# def addNode(valueID, valueContent):
+#    if -1 != valueID.find("prompt"):
+#       nodePrompt = doc.createElement('prompt')
+
+#       listMatch = patS.findall(valueContent)
+#       if "" == len(listMatch):
+#         paraNum = 0
+#       else:
+#         paraNum = len(listMatch)
+      
+#       nodePrompt.setAttribute('paramcount', str(paraNum))
+
+#       if "" != sheet.cell_value(indexRow, 8):
+#         nodePrompt.setAttribute('order', sheet.cell_value(indexRow, 8))
+#       nodePrompt.setAttribute('content', valueContent)
+    
+#       nodePrompt.setAttribute('id', matchString(patID, valueID))
+#       nodePrompts.appendChild(nodePrompt)
+
 if __name__ == "__main__":
 
   #在内存中创建一个空的文档
-  doc = Document() 
+  doc = xml.dom.minidom.Document() 
   #创建一个根节点Managers对象
   root = doc.createElement('config_sds_prompts') 
 
@@ -46,62 +75,95 @@ if __name__ == "__main__":
 
   nodeHints = doc.createElement('hintscategory')
   root.appendChild(nodeHints);
-  nodeCategory = doc.createElement('category')
-  nodeHints.appendChild(nodeCategory)
 
   nodeUnits = doc.createElement('units')
-  root.appendChild(nodeCategory) 
+  root.appendChild(nodeUnits) 
 
-  nodeSource = doc.createElement('sources')
-  root.appendChild(nodeSource)
+  nodeSources = doc.createElement('sources')
+  root.appendChild(nodeSources)
 
   nodePhonetypes = doc.createElement('phonetypes')
   root.appendChild(nodePhonetypes)
   
   #create the child element and attribute
-  indexRow = 2
-  nodePrompt = doc.createElement('prompt')
-  nodeHint = doc.createElement('hint')
-  nodeUnit = doc.createElement('unit')
-  nodeSource = doc.createElement('source')
-  nodePhonetype = doc.createElement('phonetype')
-  
+  indexRow = 1
+  patS = re.compile(r'%s')
+  patID = re.compile(r'_(\w+)')  
   while indexRow < sheet.nrows:
     
     #traverse the specific column:
-    if find the prompt in the XML_id:
-      nodeName = nodePrompt.setAttribute('id', sheet.cell_value(indexRow, 0))
-      nodeName = nodePrompt.setAttribute('paramcount', accord to the content's %s)
-      if include the %s more than 2:
-        nodeName = nodePrompt.setAttribute('order', "12")
+    valueID = sheet.cell_value(indexRow, 0)
+    valueContent = sheet.cell_value(indexRow, 2)
+    valueOrder = sheet.cell_value(indexRow, 8)
+    valueVisability = sheet.cell_value(indexRow, 9)
+    valueContentSpell = sheet.cell_value(indexRow, 10)
 
-      nodeName = nodePrompt.setAttribute('content', sheet.cell_value(indexRow, 2))
+    if -1 != valueID.find("prompt"):
+      nodePrompt = doc.createElement('prompt')
+
+      listMatch = patS.findall(valueContent)
+      if "" == len(listMatch):
+        paraNum = 0
+      else:
+        paraNum = len(listMatch)
+      nodePrompt.setAttribute('paramcount', str(paraNum))
+      if "" != sheet.cell_value(indexRow, 8):
+        nodePrompt.setAttribute('order', valueOrder)  #en is 8, else is 5
+      # if "" != valueVisability:
+      #   nodeHint.setAttribute('visability', valueVisability)
+      # if "" != valueContentSpell:
+      #   nodeHint.setAttribute('content_spell', valueContentSpell)
+      nodePrompt.setAttribute('content', valueContent)
+      nodePrompt.setAttribute('id', matchString(patID, valueID))
+
       nodePrompts.appendChild(nodePrompt)
+    
+    if -1 != valueID.find('hint'):
+      if -1 != valueID.find('hint_0'):
+        nodeCategory = doc.createElement('category')
+        nodeHints.appendChild(nodeCategory)
 
-    if find the hint in the XML_id:
-      nodeName = nodeHint.setAttribute('id', sheet.cell_value(indexRow, 0))
+      nodeHint = doc.createElement('hint')
 
-      if the content has the attribute of visability:
-        nodeName = nodeHint.setAttribute('visability', 'yes')
+      nodeHint.setAttribute('id', matchString(patID, valueID))
+      if "" != valueVisability:
+        nodeHint.setAttribute('visability', valueVisability)
+      if "" != valueContentSpell:
+        nodeHint.setAttribute('content_spell', valueContentSpell)
+      nodeHint.setAttribute('content', valueContent)
 
-      nodeName = nodeHint.setAttribute('content', sheet.cell_value(indexRow, 2))
       nodeCategory.appendChild(nodeHint)
 
-    if find the unit in the XML_id:
-      nodeName = nodeUnit.setAttribute('id', sheet.cell_value(indexRow, 0))
-      nodeName = nodeUnit.setAttribute('content', sheet.cell_value(indexRow, 2))
-      nodeUnits.appendChild(nodeHint)
+    if -1 != valueID.find('unit'):
+      nodeUnit = doc.createElement('unit')
+      nodeUnit.setAttribute('id', matchString(patID, valueID))
+      nodeUnit.setAttribute('content', valueContent)
+      if "" != valueVisability:
+        nodeUnit.setAttribute('visability', valueVisability)
+      if "" != valueContentSpell:
+        nodeUnit.setAttribute('content_spell', valueContentSpell)
+      nodeUnits.appendChild(nodeUnit)
 
-    if find the source in the XML_id:
-      nodeName = nodeSource.setAttribute('id', sheet.cell_value(indexRow, 0))
-      nodeName = nodeSource.setAttribute('content', sheet.cell_value(indexRow, 2))
+    if -1 != valueID.find('source'):
+      nodeSource = doc.createElement('source')
+      nodeSource.setAttribute('id', matchString(patID, valueID))
+      nodeSource.setAttribute('content', valueContent)
+      if "" != valueVisability:
+        nodeSource.setAttribute('visability', valueVisability)
+      if "" != valueContentSpell:
+        nodeSource.setAttribute('content_spell', valueContentSpell)
       nodeSources.appendChild(nodeSource)
 
-    if find the phonetype in the XML_id:
-      nodeName = nodePhonetype.setAttribute('id', sheet.cell_value(indexRow, 0))
-      nodeName = nodePhonetype.setAttribute('content', sheet.cell_value(indexRow, 2))
+    if -1 != valueID.find('phonetype'):
+      nodePhonetype = doc.createElement('phonetype')
+      nodePhonetype.setAttribute('id', matchString(patID, valueID))
+      nodePhonetype.setAttribute('content', valueContent)
+      if "" != valueVisability:
+        nodePhonetype.setAttribute('visability', valueVisability)
+      if "" != valueContentSpell:
+        nodePhonetype.setAttribute('content_spell', valueContentSpell)
       nodePhonetypes.appendChild(nodePhonetype)
-
+    
     indexRow += 1
   
   #create xml
