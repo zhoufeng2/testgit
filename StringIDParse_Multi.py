@@ -1,10 +1,18 @@
 #! /usr/bin/env python
 #encoding=utf-8
-import sys  
-reload(sys)  
-sys.setdefaultencoding('utf8')   
-
+ 
 import os
+
+#3.x 与 2.x变化比较大
+#2.x
+#import sys
+#reload（sys）
+#sys.setdefaultencoding('utf8')
+
+import imp
+import sys  
+imp.reload(sys)  
+
 import codecs
 import xml.etree.ElementTree as ET
 import re
@@ -226,11 +234,6 @@ class EasyExcel:
                         tempElementList.append(xml_id)
                         tempElementList.append(xmlOrignalContent)
                         tempElementList.append(contentStr)
-                        tempElementList.append(uk_english_full)
-                        tempElementList.append(thai_full)
-                        tempElementList.append(portuguese_full)
-                        tempElementList.append(spanish_full)
-                        tempElementList.append(mandarin_full)
                         flage = False
                 #return element
 
@@ -246,15 +249,17 @@ class EasyExcel:
             element = LanguageGather(tempElementList[0],tempStringID,tempElementList[1],tempElementList[2])
             lisStr  = element.getString()
             if 1 == len(exsitSheet):
-                lisStr.append(tempElementList[4])
-                lisStr.append(tempElementList[5])
-                lisStr.append(tempElementList[6])
-                lisStr.append(tempElementList[7])
+                lisStr.append(thai_full)
+                lisStr.append(portuguese_full)
+                lisStr.append(spanish_full)
+                lisStr.append(mandarin_full)
             return lisStr
         
        # print(contentStr)
         element = LanguageGather(xml_id,"Not to match",xmlOrignalContent,"Not to match")
         lisStr  = element.getString()
+        if 1 == len(exsitSheet):
+            lisStr.append(4*"")
        # print(5*"*")
         
         return lisStr
@@ -304,11 +309,6 @@ class EasyExcel:
                     tempElementList.append(xml_id)
                     tempElementList.append(xmlOrignalContent)
                     tempElementList.append(contentStr)
-                    tempElementList.append(uk_english_str)
-                    tempElementList.append(thai_str)
-                    tempElementList.append(portuguese_str)
-                    tempElementList.append(spanish_str)
-                    tempElementList.append(mandarin_str)
                     flage = False
                 
             index += 1
@@ -318,15 +318,16 @@ class EasyExcel:
             element = LanguageGather(tempElementList[0],tempStringID,tempElementList[1],tempElementList[2])
             lisStr = element.getString()
             if 1 == len(exsitSheet):
-                lisStr.append(tempElementList[4])
-                lisStr.append(tempElementList[5])
-                lisStr.append(tempElementList[6])
-                lisStr.append(tempElementList[7])
+                lisStr.append(thai_str)
+                lisStr.append(portuguese_str)
+                lisStr.append(spanish_str)
+                lisStr.append(mandarin_str)
             return lisStr
         
         element = LanguageGather(xml_id,"Not to match",xmlOrignalContent,"Not to match")
         lisStr  = element.getString()
-        
+        if 1 == len(exsitSheet):
+            lisStr.append(4*"")
         return lisStr
 
 class NewExcel:
@@ -495,7 +496,7 @@ def cmopare_sds_prompt_to_excel(xmlFile,lanuageStr,exsitSheet):
 
         xmlID = lineStr["id"]
         xmlID = str(xmlID)
-        
+    
         #order、visability和content_spell字段内容获取
         pattern = re.compile(r'order="(\w+)"')
         xmlOrder = searchString(pattern, lineStr)
@@ -508,29 +509,23 @@ def cmopare_sds_prompt_to_excel(xmlFile,lanuageStr,exsitSheet):
 
         #识别type
         pattern = re.compile(r'<(\w+)')
-        xmlID = searchString(pattern, lineStr) + "_" + xmlID
-
-        #diff the id: hint
-        if "0" == xmlID:
-            numInsertIndex += 1 
-        if xmlID.isdigit():
-            xmlID = xmlID + "_" + str(numInsertIndex-1)
-            
+        nodeType = searchString(pattern, lineStr)
+        xmlID = nodeType + "_" + xmlID
         xmlContent = patC.sub('重', xmlContent)
-        
         TempLineStr = str(lineStr)
        
-        if -1 != TempLineStr.find(XML_LABLE[0]):
+        if nodeType == XML_LABLE[0]:
             listStr = stringIDExcel.searchStringID(xmlContent,lanuageStr,xmlID,xmlOrignalContent,exsitSheet)
-        elif -1 == TempLineStr.find(XML_LABLE[2]):
+        else:
             listStr = comCmdListExcel.searchCmdType(xmlContent,lanuageStr,xmlID,xmlOrignalContent,exsitSheet)
-
+            
         listStr.append(xmlOrder)
         listStr.append(xmlVisability)
         listStr.append(xmlContentSpell)
         if "" != listStr[xmlid]:
             analyzeExcel.writeSheet(index,listStr)
             index += 1
+
             
     sdsFile.close()
 
