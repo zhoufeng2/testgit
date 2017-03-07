@@ -356,16 +356,19 @@ class NewExcel:
 
 def matchStringID(newSheetItem,specFile,countryName):
     exsitSheet = []
+    
+    #deal with the different languages
     for sheetName in languages:
-        xmlFile = specFile + "//" + "config" + "//" + countryName + "//" + sheetName + "//" + "config_sds_prompts.xml"
-        #xmlFile = specFile +"//" + countryName + "//" + "config_sds_prompts.xml"
+        xmlFile = specFile + "/" + "config" + "/" + countryName + "/" + sheetName + "/" + "config_sds_prompts.xml"
+        
+        #if it exists, then do 
         if os.path.exists(xmlFile):
             exsitSheet.append(sheetName)
             newSheetItem.pop()
             newSheetItem.append(languagesMatch[sheetName])
             analyzeExcel.addSheet(sheetName)
 
-            #if it is en 
+            #if it is english 
             if 1 == len(exsitSheet):
                 tempItem = newSheetItem[:]
                 newSheetItem.append("Thai-Full")
@@ -377,12 +380,16 @@ def matchStringID(newSheetItem,specFile,countryName):
                 newSheetItem.append("content_spell")
                 analyzeExcel.writeSheet(0, newSheetItem)
                 newSheetItem = tempItem[:]
+                cmopare_sds_prompt_to_excel(xmlFile, sheetName, exsitSheet)
             else:
                 newSheetItem.append("order")
                 newSheetItem.append("visability")
                 newSheetItem.append("content_spell")
                 analyzeExcel.writeSheet(0, newSheetItem)
-            cmopare_sds_prompt_to_excel(xmlFile, sheetName, exsitSheet)
+                cmopare_sds_prompt_to_excel(xmlFile, sheetName, exsitSheet)
+                newSheetItem.pop()
+                newSheetItem.pop()
+                newSheetItem.pop()
             print("***" + sheetName + "***")
     return exsitSheet
 
