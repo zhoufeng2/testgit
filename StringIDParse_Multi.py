@@ -1,7 +1,9 @@
 #! /usr/bin/env python
 #encoding=utf-8
+import sys  
+reload(sys)  
+sys.setdefaultencoding('utf8')   
 
-import sys
 import os
 import codecs
 import xml.etree.ElementTree as ET
@@ -111,7 +113,6 @@ areaItem = [
     "Zambia",
     "Zimbabwe",
     "pakistan"]
-
 
 class LanguageGather:
     def __init__(self,
@@ -328,8 +329,6 @@ class EasyExcel:
         
         return lisStr
 
-
-
 class NewExcel:
     def __init__(self):
         self.workbook = xlwt.Workbook()
@@ -357,8 +356,8 @@ class NewExcel:
 def matchStringID(newSheetItem,specFile,countryName):
     exsitSheet = []
     for sheetName in languages:
-        xmlFile = specFile + "//" + "config" + "//" + countryName + "//" + sheetName + "//" + "config_sds_prompts.xml"
-        #xmlFile = specFile +"//" + countryName + "//" + "config_sds_prompts.xml"
+        xmlFile = specFile + "/" + "config" + "/" + countryName + "/" + sheetName + "/" + "config_sds_prompts.xml"
+        
         if os.path.exists(xmlFile):
             exsitSheet.append(sheetName)
             newSheetItem.pop()
@@ -565,7 +564,7 @@ if __name__ == "__main__":
         analyzeExcel = NewExcel()
         exsitSheet = matchStringID(newSheetItem,specFile,countryName)
 
-        fileName = newFile + '//' + countryName + "_" +  "stringID_out.xls"
+        fileName = newFile + '/' + countryName + "_" +  "stringID_out.xls"
         if os.path.exists(fileName):
             os.remove(fileName)
             
@@ -575,7 +574,7 @@ if __name__ == "__main__":
             xlBook = xlrd.open_workbook(fileName)
             compareexcel = NewExcel()
             compareStringID(exsitSheet)
-            fileName = newFile + '//' + countryName + "_" +  "stringID_compare.xls"
+            fileName = newFile + '/' + countryName + "_" +  "stringID_compare.xls"
             if os.path.exists(fileName):
                 os.remove(fileName)
             compareexcel.saveExcel(fileName)   
