@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<config_sds_prompts>
+	<prompts>
+		<prompt id="RES_01" paramcount=0 content="No se ha registrado el domicilio. ¿Registrarlo ahora?"/>
+		<prompt id="RES_02" paramcount=0 content="No se ha registrado la dirección de la empresa. ¿Registrarla ahora?"/>
+		<prompt id="RES_03" paramcount=0 content="Diga el número de la lista."/>
+		<prompt id="RES_04" paramcount=0 content="La búsqueda no arrojó resultados."/>
+		<prompt id="RES_05" paramcount=0 content="Sin destino disponible. Primero, ajuste el destino."/>
+		<prompt id="RES_06" paramcount=1 content="El destino está a unos %s."/>
+		<prompt id="RES_07" paramcount=0 content="Favoritos está vacío."/>
+		<prompt id="RES_08" paramcount=0 content="No hay una ruta disponible. Confirme una."/>
+		<prompt id="RES_09" paramcount=0 content="El historial está vacío."/>
+		<prompt id="RES_10" paramcount=1 content="Diga su dirección en %s en el orden siguiente: &lt;ciudad&gt;&lt;calle&gt;[número de casa]."/>
+		<prompt id="RES_11" paramcount=1 content="Diga un nombre de PDI en %s."/>
+		<prompt id="RES_12" paramcount=1 content="¿Desea llamar a \tn=spell\%s\tn=normal\?"/>
+		<prompt id="RES_12_SHOW" paramcount=1 content="¿Desea llamar a %s ?"/>
+		<prompt id="RES_13" paramcount=2 content="¿Desea llamar al %s de %s?"/>
+		<prompt id="RES_14" paramcount=2 content="No hay un número de %s. ¿Desea llamar al número %s?"/>
+		<prompt id="RES_15" paramcount=1 content="No hay un número de %s. Seleccione otros números a continuación."/>
+		<prompt id="RES_16" paramcount=1 content="¿Desea llamar a %s ?"/>
+		<prompt id="RES_17" paramcount=0 content="No hay un registro de llamadas."/>
+		<prompt id="RES_18" paramcount=0 content="No hay llamadas perdidas."/>
+		<prompt id="RES_19" paramcount=1 content="%s no es válido."/>
+		<prompt id="RES_20" paramcount=0 content="No hay una fuente multimedia disponible."/>
+		<prompt id="RES_21" paramcount=0 content="No hay una fuente operativa. Puede decir otros comandos, como «cambiar fuente»."/>
+		<prompt id="RES_22" paramcount=0 content="Todas las fuentes multimedia están apagadas."/>
+		<prompt id="RES_23" paramcount=0 content="Esta es la primera página."/>
+		<prompt id="RES_24" paramcount=0 content="Esta es la última página."/>
+		<prompt id="RES_25" paramcount=1 content="El número máximo es %s."/>
+		<prompt id="RES_26" paramcount=0 content="Inténtelo de nuevo."/>
+		<prompt id="RES_27" paramcount=0 content="Por favor diga un comando después del tono."/>
+		<prompt id="RES_28" paramcount=0 content="La fuente actual no admite «entremezclada»."/>
+		<prompt id="RES_29" paramcount=0 content="La fuente actual no admite «reproducir»."/>
+		<prompt id="RES_30" paramcount=0 content="La fuente actual no admite «pausar»."/>
+		<prompt id="RES_31" paramcount=0 content="La fuente actual no admite «reproducir siguiente»."/>
+		<prompt id="RES_32" paramcount=0 content="La fuente actual no admite «reproducir anterior»."/>
+		<prompt id="RES_33" paramcount=0 content="Hay un solo favorito."/>
+		<prompt id="RES_34" paramcount=0 content="Hay varios favoritos. Diga el número de lista."/>
+		<prompt id="RES_35" paramcount=0 content="Hay un solo registro en el historial."/>
+		<prompt id="RES_36" paramcount=0 content="Hay varios registros en el historial. Diga el número de lista."/>
+		<prompt id="RES_37" paramcount=0 content="¿Qué estado desea? Diga el número de lista."/>
+		<prompt id="RES_38" paramcount=1 content="Buscando la dirección %s."/>
+		<prompt id="RES_39" paramcount=0 content="¿Qué dirección desea? Diga el número de lista."/>
+		<prompt id="RES_40" paramcount=1 content="Buscando el PDI %s."/>
+		<prompt id="RES_41" paramcount=0 content="¿Qué PDI desea? Diga el número de lista."/>
+		<prompt id="RES_42" paramcount=1 content="%s tiene varios números telefónicos. Diga el número de lista."/>
+		<prompt id="RES_43" paramcount=0 content="¿Qué contacto desea? Diga el número de lista."/>
+		<prompt id="RES_44" paramcount=0 content="Hay varios registros de llamadas recientes. Diga el número de lista."/>
+		<prompt id="RES_45" paramcount=0 content="Hay varios registros de llamadas perdidas. Diga el número de lista."/>
+		<prompt id="RES_46" paramcount=0 content="¿Qué álbum desea? Diga el número de lista."/>
+		<prompt id="RES_47" paramcount=0 content="¿Qué artista desea? Diga el número de lista."/>
+		<prompt id="RES_48" paramcount=0 content="¿Qué género desea? Diga el número de lista."/>
+		<prompt id="RES_49" paramcount=0 content="¿Qué lista de reproducción desea? Diga el número de lista."/>
+		<prompt id="RES_50" paramcount=1 content="Buscando la instalación %s."/>
+		<prompt id="RES_51" paramcount=0 content="¿Qué instalación desea? Diga el número de lista."/>
+		<prompt id="RES_52" paramcount=1 content="No hay %s cerca."/>
+		<prompt id="RES_53" paramcount=0 content="Calculando la ruta."/>
+		<prompt id="RES_54" paramcount=0 content="Hay varias direcciones. Diga el número de lista."/>
+		<prompt id="RES_55" paramcount=0 content="Hay varios PDI. Diga el números de lista."/>
+		<prompt id="RES_56" paramcount=0 content="¿Qué fuente desea abrir? Diga el número de lista."/>
+		<prompt id="RES_57" paramcount=0 content="Fuente apagada."/>
+		<prompt id="RES_58" paramcount=0 content="Reproducción entremezclada."/>
+		<prompt id="RES_59" paramcount=0 content="Reproduciendo."/>
+		<prompt id="RES_60" paramcount=0 content="Pausar."/>
+		<prompt id="RES_61" paramcount=0 content="Siguiente."/>
+		<prompt id="RES_62" paramcount=0 content="Anterior."/>
+		<prompt id="RES_63" paramcount=1 content="Reproduciendo álbum %s."/>
+		<prompt id="RES_64" paramcount=1 content="Reproduciendo artista %s."/>
+		<prompt id="RES_65" paramcount=1 content="Reproduciendo género %s."/>
+		<prompt id="RES_66" paramcount=1 content="Reproduciendo la lista %s."/>
+		<prompt id="RES_67" paramcount=0 content="Salir del asistente de voz inmediatamente."/>
+		<prompt id="RES_68" paramcount=1 content="Hay varios %s cerca. Diga el número de lista."/>
+		<prompt id="RES_69" paramcount=1 content="¿Desea encontrar el código postal \tn=spell\%s\tn=normal\?"/>
+		<prompt id="RES_69_SHOW" paramcount=1 content="¿Desea encontrar el código postal %s?"/>
+		<prompt id="RES_70" paramcount=1 content="El código postal \tn=spell\%s\tn=normal\ no es válido."/>
+		<prompt id="RES_70_SHOW" paramcount=1 content="El código postal %s no es válido."/>
+        <prompt id="RES_71" paramcount=0 content="¿Cuál código postal desea? Diga el número de lista."/>
+        <prompt id="RES_72" paramcount=0 content="¿A qué número de teléfono desea llamar? Diga el número de lista."/>
+        <prompt id="RES_73" paramcount=0 content="Registrando el domicilio."/>
+        <prompt id="RES_74" paramcount=0 content="Esta operación se cancelará. Salir del asistente de voz inmediatamente."/>
+        <prompt id="RES_75" paramcount=0 content="Calculando el trayecto a casa."/>
+        <prompt id="RES_76" paramcount=0 content="Registrando la dirección de la compañía."/>
+        <prompt id="RES_77" paramcount=0 content="Calculando el trayecto a la compañía."/>
+        <prompt id="RES_78" paramcount=0 content="Mostrar todo el trayecto."/>
+        <prompt id="RES_79" paramcount=0 content="Mostrar destino."/>
+        <prompt id="RES_80" paramcount=0 content="Localizando su ubicación."/>        
+        <prompt id="RES_81" paramcount=1 content="Llamando a %s."/>
+        <prompt id="RES_82" paramcount=2 order="21" content="Llamando al %s %s."/>        
+        <prompt id="RES_83" paramcount=0 content="Llamando al teléfono."/>
+        <prompt id="RES_84" paramcount=1 content="Cambiando la fuente a %s."/>
+        <prompt id="RES_85" paramcount=1 content="Abriendo %s."/>	
+        <prompt id="RES_86" paramcount=1 content="Hay varios números del teléfono de %s. Diga el número de lista."/>
+        <prompt id="RES_87" paramcount=0 content="Ya se está reproduciendo la música. Puede decir otros comandos, como: pausar."/>	
+        <prompt id="RES_88" paramcount=0 content="Ya se ha pausado la música. Puede decir otros comandos, como: reproducir."/>
+        <prompt id="RES_89" paramcount=0 content='El dispositivo actual no admite la «Reproducción aleatoria». Puede decir otros comandos como, «Reproducir».'/>
+        <prompt id="RES_90" paramcount=0 content='El estado actual no admite «Pausar». Puede decir otros comandos como, «Reproducir».'/>
+        <prompt id="RES_91" paramcount=0 content='El estado actual no admite la «Reproducción aleatoria». Puede decir otros comandos como, «Reproducir».'/>
+        <prompt id="RES_92" paramcount=0 content='El estado actual no admite «Reproducir anterior». Puede decir otros comandos como, «Reproducir».'/>
+        <prompt id="RES_93" paramcount=0 content='El estado actual no admite «Reproducir siguiente». Puede decir otros comandos como, «Reproducir».'/>      
+        <prompt id="RES_94" paramcount=0 content="Preparando... Espere un momento y vuelva a intentarlo."/>
+        <prompt id="RES_94_SHOW" paramcount=0 content="Preparando... Espere un momento y vuelva a intentarlo."/>
+        <prompt id="RES_95" paramcount=0 content="Elija un dispositivo y vuelva a intentarlo."/>  
+        <prompt id="RES_95_SHOW" paramcount=0 content="Elija un dispositivo y vuelva a intentarlo."/>       
+        <prompt id="RES_96" paramcount=0 content="Se produjo un error. Verifique la pantalla del disco."/>
+        <prompt id="RES_97" paramcount=0 content="Realizando el preajuste automático... Espere un momento y vuelva a intentarlo."/>
+        <prompt id="RES_97_SHOW" paramcount=0 content="Realizando el preajuste automático... Espere un momento y vuelva a intentarlo."/>
+        <prompt id="RES_98" paramcount=0 content="No hay un dispositivo de audio Bluetooth. Vaya a Ajustes de Bluetooth para ajustarlo."/>
+        <prompt id="RES_99" paramcount=0 content="No hay un archivo para reproducir."/>
+        <prompt id="RES_100" paramcount=0 content="No hay un teléfono disponible. Vaya a Ajuste Bluetooth para ajustarlo."/>
+        <prompt id="RES_101" paramcount=0 content='El dispositivo actual no admite la «Reproducción aleatoria». Puede decir otros comandos como, «Pausar».'/>
+        <prompt id="RES_102" paramcount=0 content="Finalice los ajustes del disco y vuelva a intentarlo."/>
+        <prompt id="RES_102_SHOW" paramcount=0 content="Finalice los ajustes del disco y vuelva a intentarlo."/>   
+        <prompt id="RES_103" paramcount=0 content='El estado actual no admite la «Reproducir».'/>  
+        <prompt id="RES_104" paramcount=0 content='El estado actual no admite «Pausar».'/>  
+        <prompt id="RES_105" paramcount=0 content='El estado actual no admite la «Reproducción aleatoria».'/>  
+        <prompt id="RES_106" paramcount=0 content='El estado actual no admite «Reproducir siguiente».'/>  
+        <prompt id="RES_107" paramcount=0 content='El estado actual no admite «Reproducir anterior».'/> 
+        <prompt id="NOLEADINGSILENCE" paramcount=0 content="Por favor espere un momento después del tono y luego diga el comando. "/>
+        <prompt id="BADSNR" paramcount=0 content="Hable más alto por favor. "/>  
+        <prompt id="BADSNR_OVERLOAD" paramcount=0 content="El ambiente es muy ruidoso. "/>        
+        <prompt id="OVERLOAD" paramcount=0 content="La voz es muy alta. "/>
+        <prompt id="TOOQUIET" paramcount=0 content="La voz es muy baja. "/>
+        <prompt id="NOSIGNAL" paramcount=0 content="Ninguna voz ha podido ser detectada. "/>
+        <prompt id="POORMIC" paramcount=0 content="El micrófono o el sistema de audio es de muy baja calidad. "/>
+    </prompts>
+	<hintscategory>
+		<category>
+			<hint id=0	content="Cambiar la fuente"/>
+			<hint id=1	content="Cambiar la fuente a <fuente>"/>
+			<hint id=2	content="Fuente apagada"/>
+		</category>
+		<category>
+			<hint id=0	content="Reproducción aleatoria"/>
+			<hint id=1	content="Reproducir"/>
+			<hint id=2	content="Pausar"/>
+			<hint id=3	content="Canción siguiente"/>
+			<hint id=4	content="Canción anterior"/>
+		</category>
+		<category>
+			<hint id=0	visability="album"    content="Reproducir el álbum <nombre del álbum>"/>
+			<hint id=1	visability="artist"   content="Reproducir el artista <nombre del artista>"/>
+			<hint id=2	visability="genre"    content="Reproducir el género <nombre del género>"/>
+			<hint id=3	visability="playlist" content="Reproducir la lista <nombre de la lista>"/>
+		</category>
+		<category>
+			<hint id=0	visability="hfpcontact" content="Llamar a <contacto>"/>
+			<hint id=1	visability="hfpcontact" content="Llamar a <contacto> <tipo de teléfono>"/>
+			<hint id=2	visability="hfpconnect" content="Marcar <número de teléfono>"/>
+		</category>
+		<category>
+			<hint id=0	visability="hfpconnect" content="Lista de llamadas recientes"/>
+			<hint id=1	visability="hfpconnect" content="Lista de llamadas perdidas"/>
+		</category>
+		<category>
+			<hint id=0	content="Cancelar"/>
+			<hint id=1	content="Atrás"/>
+			<hint id=2	content="Repetir"/>
+		</category>
+	</hintscategory>
+	<units> 
+		<unit id="RES_M" 	content="m"/> 
+		<unit id="RES_KM" 	content="KM"/> 
+		<unit id="RES_MILE" content="Milha"/> 
+		<unit id="RES_YARD" content="Yd"/> 
+	</units>
+	<sources> 
+		<source id="iPod" 		content="iPod"/> 
+		<source id="USB" 		content="USB"                content_spell="US\toi=lhp\'be\toi=orth\"/> 
+		<source id="USB1" 		content="USB1"               content_spell="US\toi=lhp\'be\toi=orth\1"/> 
+		<source id="USB2" 		content="USB2"               content_spell="US\toi=lhp\'be\toi=orth\2"/> 
+		<source id="BT-Audio" 	content="Audio Bluetooth"/> 
+		<source id="SD" 		content="SD"/> 
+		<source id="AM" 		content="AM"/> 
+		<source id="FM" 		content="FM"/> 
+		<source id="Disc" 		content="Disco"/> 
+		<source id="DTV" 		content="DTV"               content_spell="DT\toi=lhp\be\toi=orth\"/> 
+		<source id="Aux" 		content="AUX"               content_spell="\pause=1\AUX"/> 
+		<source id="AUX"        content="AUX"               content_spell="\pause=1\AUX"/> 
+		<source id="VTR" 		content="VTR"               content_spell="\toi=lhp\be\toi=orth\TR"/>  
+		<source id="HDMI-In" 	content="HDMI-In"/> 
+	</sources> 
+    <phonetypes> 
+		<phonetype id="RES_MOBILE" 	content="Celular"/> 
+		<phonetype id="RES_HOME" 	content="Domicilio"/> 
+		<phonetype id="RES_WORK" 	content="Trabajo"/> 
+		<phonetype id="RES_OTHER" 	content="Otro"/> 
+		<phonetype id="RES_DEFAULT" content="Predeterminado"/> 
+	</phonetypes>
+</config_sds_prompts>

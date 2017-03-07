@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config_sds_prompts>
+    <prompts>
+        <prompt id="RES_01" paramcount=0 content="家庭地址未设定，您需要现在设定吗？"/>
+        <prompt id="RES_02" paramcount=0 content="公司地址未设定，您需要现在设定吗？"/>
+        <prompt id="RES_03" paramcount=0 content="请说编号。"/>
+        <prompt id="RES_04" paramcount=0 content="无搜索结果。"/>
+        <prompt id="RES_05" paramcount=0 content="目的地未设定，请先进行设定。"/>
+        <prompt id="RES_06" paramcount=1 content="距离目的地大约%s。"/>
+        <prompt id="RES_07" paramcount=0 content="您的收藏为空。"/>
+        <prompt id="RES_08" paramcount=0 content="没有路线，请确认。"/>
+        <prompt id="RES_09" paramcount=0 content="历史记录为空。"/>
+        <prompt id="RES_10" paramcount=1 content="按下列顺序说%s的地址：<城市><路>[门牌号]。"/>
+        <prompt id="RES_11" paramcount=1 content="请说%s的POI名。"/>
+        <prompt id="RES_12" paramcount=1 content="您是 要拨打\tn=spell\%s\tn=normal\吗？"/>
+        <prompt id="RES_12_SHOW" paramcount=1 content="您是要拨打%s吗？"/>
+        <prompt id="RES_13" paramcount=2 order="21" content="您是要拨打%s的%s吗？"/>
+        <prompt id="RES_14" paramcount=2 content="没有%s，您要呼叫他的%s吗？"/>
+        <prompt id="RES_15" paramcount=1 content="没有%s。请从下面选择其它号码。"/>
+        <prompt id="RES_16" paramcount=1 content="您是要呼叫%s吗？"/>
+        <prompt id="RES_17" paramcount=0 content="没有通话记录。"/>
+        <prompt id="RES_18" paramcount=0 content="没有未接来电。"/>
+        <prompt id="RES_19" paramcount=1 content="%s无效。"/>
+        <prompt id="RES_20" paramcount=0 content="当前没有可用的媒体源。"/>
+        <prompt id="RES_21" paramcount=0 content='没有可操作的音乐源。您可以说“切换音乐源”等其它命令。'/>
+        <prompt id="RES_22" paramcount=0 content="所有媒体源都已关闭。"/>
+        <prompt id="RES_23" paramcount=0 content="当前是第一页。"/>
+        <prompt id="RES_24" paramcount=0 content="当前是最后一页。"/>
+        <prompt id="RES_25" paramcount=1 content="最大的编号是%s。"/>
+        <prompt id="RES_26" paramcount=0 content="请重试。"/>
+        <prompt id="RES_27" paramcount=0 content="请在“嘀”声后说语音命令。"/>
+        <prompt id="RES_28" paramcount=0 content='当前媒体源不支持“随机播放”。'/>
+        <prompt id="RES_29" paramcount=0 content='当前媒体源不支持“播放”。'/>
+        <prompt id="RES_30" paramcount=0 content='当前媒体源不支持“暂停”。'/>
+        <prompt id="RES_31" paramcount=0 content='当前媒体源不支持“播放下一个”。'/>
+        <prompt id="RES_32" paramcount=0 content='当前媒体源不支持“播放上一个”。'/>
+        <prompt id="RES_33" paramcount=0 content="只有一个收藏点。"/>
+        <prompt id="RES_34" paramcount=0 content="有多个收藏点，请说编号。"/>
+        <prompt id="RES_35" paramcount=0 content="只有一条历史记录。"/>
+        <prompt id="RES_36" paramcount=0 content="有多条历史记录，请说编号。"/>
+        <prompt id="RES_37" paramcount=0 content="您要选择哪个省？请说编号。"/>
+        <prompt id="RES_38" paramcount=1 content="正在搜索地址%s。"/>
+        <prompt id="RES_39" paramcount=0 content="您要选择哪个地址？请说编号。"/>
+        <prompt id="RES_40" paramcount=1 content="正在搜索POI%s。"/>
+        <prompt id="RES_41" paramcount=0 content="您要选择哪个POI？请说编号。"/>
+        <prompt id="RES_42" paramcount=1 content="%s有多个电话号码，请说编号。"/>
+        <prompt id="RES_43" paramcount=0 content="您要选择哪个联系人？请说编号。"/>
+        <prompt id="RES_44" paramcount=0 content="显示通话记录，请说您想拨打的电话的编号。"/>
+        <prompt id="RES_45" paramcount=0 content="显示未接电话记录，请说您想拨打的电话的编号。"/>
+        <prompt id="RES_46" paramcount=0 content="您要选择哪张专辑？请说编号。"/>
+        <prompt id="RES_47" paramcount=0 content="您要选择哪位歌手？请说编号。"/>
+        <prompt id="RES_48" paramcount=0 content="您要选择哪种音乐流派？请说编号。"/>
+        <prompt id="RES_49" paramcount=0 content="您要选择哪个播放列表？请说编号。"/>
+        <prompt id="RES_50" paramcount=1 content="正在搜索设施%s。"/>
+        <prompt id="RES_51" paramcount=0 content="您要选择哪个设施？请说编号。"/>
+        <prompt id="RES_52" paramcount=1 content="附近没有%s。"/>
+        <prompt id="RES_53" paramcount=0 content="正在计算路线。"/>
+        <prompt id="RES_54" paramcount=0 content="搜索到多个地址，请说编号。"/>
+        <prompt id="RES_55" paramcount=0 content="搜索到多个POI，请说编号。"/>
+        <prompt id="RES_56" paramcount=0 content="您要打开哪个媒体源？请说编号。"/>
+        <prompt id="RES_57" paramcount=0 content="关闭媒体源。"/>
+        <prompt id="RES_58" paramcount=0 content="随机播放。"/>
+        <prompt id="RES_59" paramcount=0 content="播放。"/>
+        <prompt id="RES_60" paramcount=0 content="暂停。"/>
+        <prompt id="RES_61" paramcount=0 content="播放下一个。"/>
+        <prompt id="RES_62" paramcount=0 content="播放上一个。"/>
+        <prompt id="RES_63" paramcount=1 content="播放专辑%s。"/>
+        <prompt id="RES_64" paramcount=1 content="播放歌手%s。"/>
+        <prompt id="RES_65" paramcount=1 content="播放音乐流派%s。"/>
+        <prompt id="RES_66" paramcount=1 content="播放列表%s。"/>
+        <prompt id="RES_67" paramcount=0 content="立即退出语音助手。"/>
+        <prompt id="RES_68" paramcount=1 content="搜索到多个%s。请说编号。"/>
+        <prompt id="RES_69" paramcount=1 content="您是要搜索邮编\tn=spell\%s\tn=normal\吗？"/>
+        <prompt id="RES_69_SHOW" paramcount=1 content="您是要搜索邮编%s吗？"/>
+        <prompt id="RES_70" paramcount=1 content="邮编\tn=spell\%s\tn=normal\无效。"/>
+        <prompt id="RES_70_SHOW" paramcount=1 content="邮编%s无效。"/>
+        <prompt id="RES_71" paramcount=0 content="您要选择哪个邮编？请说编号。"/>
+        <prompt id="RES_72" paramcount=0 content="您要拨打哪个电话号码？请说编号。"/>
+        <prompt id="RES_73" paramcount=0 content="设定家庭地址。"/>
+        <prompt id="RES_74" paramcount=0 content="此操作将被取消，立即退出语音助手。"/>
+        <prompt id="RES_75" paramcount=0 content="正在计算回家的路线。"/>
+        <prompt id="RES_76" paramcount=0 content="设定公司地址。"/>
+        <prompt id="RES_77" paramcount=0 content="正在计算到公司的路线。"/>
+        <prompt id="RES_78" paramcount=0 content="显示全路线。"/>
+        <prompt id="RES_79" paramcount=0 content="显示目的地。"/>
+        <prompt id="RES_80" paramcount=0 content="正在确定您的位置。"/>        
+        <prompt id="RES_81" paramcount=1 content="呼叫%s。"/>
+        <prompt id="RES_82" paramcount=2 order="21" content="拨打%s %s。"/>        
+        <prompt id="RES_83" paramcount=0 content="拨打电话。"/>
+        <prompt id="RES_84" paramcount=1 content="将媒体源切换到%s。"/>
+        <prompt id="RES_85" paramcount=1 content="打开%s。"/>
+        <prompt id="RES_86" paramcount=1 content="有多个%s号码，请说编号。"/>
+        <prompt id="RES_87" paramcount=1 content="已在播放音乐。您可以说其它命令，例如：暂停。"/>
+        <prompt id="RES_88" paramcount=1 content="已暂停播放音乐。您可以说其它命令，例如：播放。"/>
+        <prompt id="RES_89" paramcount=0 content='当前设备不支持“随机”。您可以说“播放”等其它命令。'/>
+        <prompt id="RES_90" paramcount=0 content='当前状态不支持“暂停”。您可以说“播放”等其它命令。'/>
+        <prompt id="RES_91" paramcount=0 content='当前状态不支持“随机”。您可以说“播放”等其它命令。'/>
+        <prompt id="RES_92" paramcount=0 content='当前状态不支持“播放上一个”。您可以说“播放”等其它命令。'/>
+        <prompt id="RES_93" paramcount=0 content='当前状态不支持“播放下一个”。您可以说“播放”等其它命令。'/>      
+        <prompt id="RES_94" paramcount=0 content="正在准备…… 请稍后chong2试。"/>
+        <prompt id="RES_94_SHOW" paramcount=0 content="正在准备…… 请稍后重试。"/>
+        <prompt id="RES_95" paramcount=0 content="请选择一个设备并chong2试。"/> 
+        <prompt id="RES_95_SHOW" paramcount=0 content="请选择一个设备并重试。"/>        
+        <prompt id="RES_96" paramcount=0 content="发生错误。请在碟片屏幕确认。"/>
+        <prompt id="RES_97" paramcount=0 content="正在自动预设…… 请稍后chong2试。 "/>
+        <prompt id="RES_97_SHOW" paramcount=0 content="正在自动预设…… 请稍后重试。 "/>
+        <prompt id="RES_98" paramcount=0 content="没有可用的蓝牙音频设备。请到“蓝牙设置”进行设定。"/>
+        <prompt id="RES_99" paramcount=0 content="没有可以播放的文件。"/>
+        <prompt id="RES_100" paramcount=0 content="没有可用的电话设备。请到蓝牙设置进行设定。"/>
+        <prompt id="RES_101" paramcount=0 content='当前设备不支持“随机”。您可以说“暂停”等其它命令。'/>
+        <prompt id="RES_102" paramcount=0 content="请结束碟片设置并chong2试。"/>  
+        <prompt id="RES_102_SHOW" paramcount=0 content="请结束碟片设置并重试。"/>  
+        <prompt id="RES_103" paramcount=0 content='当前状态不支持“播放”。'/>  
+        <prompt id="RES_104" paramcount=0 content='当前状态不支持“暂停”。'/>  
+        <prompt id="RES_105" paramcount=0 content='当前状态不支持“随机”。'/>  
+        <prompt id="RES_106" paramcount=0 content='当前状态不支持“播放下一个”。'/>  
+        <prompt id="RES_107" paramcount=0 content='当前状态不支持“播放上一个”。'/>
+        <prompt id="NOLEADINGSILENCE" paramcount=0 content="请在“嘀”声后稍作停留说语音命令。 "/>
+        <prompt id="BADSNR" paramcount=0 content="请说大声一点。 "/>  
+        <prompt id="BADSNR_OVERLOAD" paramcount=0 content="环境太嘈杂。 "/>        
+        <prompt id="OVERLOAD" paramcount=0 content="声音太响。 "/>
+        <prompt id="TOOQUIET" paramcount=0 content="声音太轻。 "/>
+        <prompt id="NOSIGNAL" paramcount=0 content="未检测到输入信号。 "/>
+        <prompt id="POORMIC" paramcount=0 content="麦克风或音频硬件质量太差。 "/>
+    </prompts>
+    <hintscategory>
+        <category>
+            <hint id=0  content="打开媒体源"/>
+            <hint id=1  content="打开<媒体源>"/>
+            <hint id=2  content="关闭媒体源"/>
+        </category>
+        <category>
+            <hint id=0  content="随机播放"/>
+            <hint id=1  content="开始播放"/>
+            <hint id=2  content="下一首歌"/>
+            <hint id=3  content="上一首歌"/>
+            <hint id=4  content="暂停"/>
+        </category>
+        <category>
+            <hint id=0  visability="album"    content="播放专辑<专辑名>"/>
+            <hint id=1  visability="artist"   content="播放歌手<歌手名>的歌"/>
+            <hint id=2  visability="genre"    content="播放歌曲流派<种类名>"/>
+            <hint id=3  visability="playlist" content="播放音乐列表<播放列表名>"/>
+        </category>
+        <category>
+            <hint id=0  visability="hfpcontact" content="呼叫<联系人>"/>
+            <hint id=1  visability="hfpcontact" content="拨打<联系人>的<电话类型>"/>
+            <hint id=2  visability="hfpconnect" content="拨打<电话号码>"/>
+        </category>
+        <category>
+            <hint id=0  visability="hfpconnect" content="显示最近的通话记录"/>
+            <hint id=1  visability="hfpconnect" content="显示未接电话"/>
+        </category>
+        <category>
+            <hint id=0  content="取消识别"/>
+            <hint id=1  content="返回"/>
+            <hint id=2  content="重复"/>
+        </category>
+    </hintscategory>
+    <units> 
+        <unit id="RES_M"    content="米"/> 
+        <unit id="RES_KM"   content="公里"/> 
+        <unit id="RES_MILE" content="英里"/> 
+        <unit id="RES_YARD" content="码"/> 
+    </units>
+    <sources> 
+        <source id="iPod"       content="iPod"/> 
+        <source id="USB"        content="USB"/> 
+        <source id="USB1"       content="USB1"/> 
+        <source id="USB2"       content="USB2"/> 
+        <source id="BT-Audio"   content="蓝牙音频"/> 
+        <source id="SD"         content="SD"/> 
+        <source id="AM"         content="AM"         content_spell="A M"/> 
+        <source id="FM"         content="FM"/> 
+        <source id="Disc"       content="碟片"/> 
+        <source id="DTV"        content="DTV"/> 
+        <source id="Aux"        content="AUX"        content_spell="\pause=10\auks"/> 
+        <source id="AUX"        content="AUX"        content_spell="\pause=10\auks"/> 
+        <source id="VTR"        content="VTR"/>  
+        <source id="HDMI-In"    content="HDMI-In"/> 
+    </sources> 
+    <phonetypes> 
+        <phonetype id="RES_MOBILE"  content="手机"/> 
+        <phonetype id="RES_HOME"    content="家庭电话"/> 
+        <phonetype id="RES_WORK"    content="工作电话"/> 
+        <phonetype id="RES_OTHER"   content="其他电话"/> 
+        <phonetype id="RES_DEFAULT" content="默认电话"/> 
+    </phonetypes>
+</config_sds_prompts>

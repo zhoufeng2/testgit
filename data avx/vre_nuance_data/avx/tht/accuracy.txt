@@ -1,0 +1,15 @@
+#BOM
+candidate
+5000
+candidate_with_page
+5000
+common
+200
+confirm
+5000
+content
+5000
+main
+5000
+other
+5000

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config_sds_prompts>
+    <prompts>
+        <prompt id="RES_01" paramcount=0 content="Home address is unregistered. Register now?"/>
+		<prompt id="RES_02" paramcount=0 content="Company address is unregistered. Register now?"/>
+		<prompt id="RES_03" paramcount=0 content="Please say the list number."/>
+		<prompt id="RES_04" paramcount=0 content="There's no search result."/>
+		<prompt id="RES_05" paramcount=0 content="Destination is unavailable. Please set the destination first."/>
+		<prompt id="RES_06" paramcount=1 content="The destination is about %s away."/>
+		<prompt id="RES_07" paramcount=0 content="Your favourites are empty."/>
+		<prompt id="RES_08" paramcount=0 content="There's no route available. Please confirm."/>
+		<prompt id="RES_09" paramcount=0 content="History is empty."/>
+		<prompt id="RES_10" paramcount=1 content="Speak your address in %s in the following order: <city><road>[house number]."/>
+		<prompt id="RES_11" paramcount=1 content="Speak a POI name in %s."/>
+		<prompt id="RES_12" paramcount=1 content="Do you want to call \tn=spell\%s\tn=normal\?"/>
+		<prompt id="RES_12_SHOW" paramcount=1 content="Do you want to call %s?"/>
+		<prompt id="RES_13" paramcount=2 order="12" content="Do you want to call the %s of %s?"/>
+		<prompt id="RES_14" paramcount=2 content="There's no %s number. Call %s number?"/>
+		<prompt id="RES_15" paramcount=1 content="There's no %s number. Please select other numbers from below."/>
+		<prompt id="RES_16" paramcount=1 content="Do you want to call %s?"/>
+		<prompt id="RES_17" paramcount=0 content="There's no call record."/>
+		<prompt id="RES_18" paramcount=0 content="There's no missed call."/>
+		<prompt id="RES_19" paramcount=1 content="%s is invalid."/>
+		<prompt id="RES_20" paramcount=0 content="There's no media source available."/>
+		<prompt id="RES_21" paramcount=0 content="There's no operational source. You can say other commands such as &quot;change source&quot;."/>
+		<prompt id="RES_22" paramcount=0 content="All media sources are off."/>
+		<prompt id="RES_23" paramcount=0 content="This is the first page."/>
+		<prompt id="RES_24" paramcount=0 content="This is the last page."/>
+		<prompt id="RES_25" paramcount=1 content="The maximum number is %s."/>
+		<prompt id="RES_26" paramcount=0 content="Please try again."/>
+		<prompt id="RES_27" paramcount=0 content="Please say a command after beep tone."/>
+		<prompt id="RES_28" paramcount=0 content='Current source does not support "shuffle".'/>
+		<prompt id="RES_29" paramcount=0 content='Current source does not support "play".'/>
+		<prompt id="RES_30" paramcount=0 content='Current source does not support "pause".'/>
+		<prompt id="RES_31" paramcount=0 content='Current source does not support "play next".'/>
+		<prompt id="RES_32" paramcount=0 content='Current source does not support "play previous".'/>
+		<prompt id="RES_33" paramcount=0 content="There's only one favourite."/>
+		<prompt id="RES_34" paramcount=0 content="There are several favourites. Please say the list number."/>
+		<prompt id="RES_35" paramcount=0 content="There's only one record in history."/>
+		<prompt id="RES_36" paramcount=0 content="There are several records in history. Please say the list number."/>
+		<prompt id="RES_37" paramcount=0 content="Which state do you want? Please say the list number."/>
+		<prompt id="RES_38" paramcount=1 content="Searching the address %s."/>
+		<prompt id="RES_39" paramcount=0 content="Which address do you want? Please say the list number."/>
+		<prompt id="RES_40" paramcount=1 content="Searching the POI %s."/>
+		<prompt id="RES_41" paramcount=0 content="Which POI do you want? Please say the list number."/>
+		<prompt id="RES_42" paramcount=1 content="%s has several phone numbers. Please say the list number."/>
+		<prompt id="RES_43" paramcount=0 content="Which contact do you want? Please say the list number."/>
+		<prompt id="RES_44" paramcount=0 content="There are several recent call records. Please say the list number."/>
+		<prompt id="RES_45" paramcount=0 content="There are several missed call records. Please say the list number."/>
+		<prompt id="RES_46" paramcount=0 content="Which album do you want? Please say the list number."/>
+		<prompt id="RES_47" paramcount=0 content="Which artist do you want? Please say the list number."/>
+		<prompt id="RES_48" paramcount=0 content="Which genre do you want? Please say the list number."/>
+		<prompt id="RES_49" paramcount=0 content="Which playlist do you want? Please say the list number."/>
+		<prompt id="RES_50" paramcount=1 content="Searching the facility %s."/>
+		<prompt id="RES_51" paramcount=0 content="Which facility do you want? Please say the list number."/>
+		<prompt id="RES_52" paramcount=1 content="There's no %s nearby."/>
+		<prompt id="RES_53" paramcount=0 content="Calculating the route."/>
+		<prompt id="RES_54" paramcount=0 content="There are several addresses. Please say the list number."/>
+		<prompt id="RES_55" paramcount=0 content="There are several POI. Please say the list number."/>
+		<prompt id="RES_56" paramcount=0 content="Which source do you want to open? Please say the list number."/>
+		<prompt id="RES_57" paramcount=0 content="Source off."/>
+		<prompt id="RES_58" paramcount=0 content="Shuffle play."/>
+		<prompt id="RES_59" paramcount=0 content="Playing."/>
+		<prompt id="RES_60" paramcount=0 content="Pause."/>
+		<prompt id="RES_61" paramcount=0 content="Next."/>
+		<prompt id="RES_62" paramcount=0 content="Previous."/>
+		<prompt id="RES_63" paramcount=1 content="Playing album %s."/>
+		<prompt id="RES_64" paramcount=1 content="Playing artist %s."/>
+		<prompt id="RES_65" paramcount=1 content="Playing genre %s."/>
+		<prompt id="RES_66" paramcount=1 content="Playing playlist %s."/>
+		<prompt id="RES_67" paramcount=0 content="Exit voice assist immediately."/>
+		<prompt id="RES_68" paramcount=1 content="There are several %s nearby. Please say the list number."/>
+		<prompt id="RES_69" paramcount=1 content="Do you want to find the postal code \tn=spell\%s\tn=normal\?"/>
+		<prompt id="RES_69_SHOW" paramcount=1 content="Do you want to find the postal code %s?"/>
+		<prompt id="RES_70" paramcount=1 content="The postal code \tn=spell\%s\tn=normal\ is invalid."/>
+		<prompt id="RES_70_SHOW" paramcount=1 content="The postal code %s is invalid."/>
+		<prompt id="RES_71" paramcount=0 content="Which postal code do you want? Please say the list number."/>
+		<prompt id="RES_72" paramcount=0 content="Which phone number do you want to call? Please say the list number."/>
+        <prompt id="RES_73" paramcount=0 content="Registering the home address."/>
+        <prompt id="RES_74" paramcount=0 content="This operation will be cancelled. Exit voice assist immediately."/>
+        <prompt id="RES_75" paramcount=0 content="Calculating the route to home."/>
+        <prompt id="RES_76" paramcount=0 content="Registering the company address."/>
+        <prompt id="RES_77" paramcount=0 content="Calculating the route to company."/>
+        <prompt id="RES_78" paramcount=0 content="Showing the whole route."/>
+        <prompt id="RES_79" paramcount=0 content="Showing destination."/>
+        <prompt id="RES_80" paramcount=0 content="Locating your position."/>      
+        <prompt id="RES_81" paramcount=1 content="Calling %s."/>
+        <prompt id="RES_82" paramcount=2 order="21" content="Calling %s %s."/>        
+        <prompt id="RES_83" paramcount=0 content="Calling phone."/>
+        <prompt id="RES_84" paramcount=1 content="Changing source to %s."/>
+        <prompt id="RES_85" paramcount=1 content="Opening %s."/>
+        <prompt id="RES_86" paramcount=1 content="There are several phone numbers of %s. Please say the list number."/>
+        <prompt id="RES_87" paramcount=0 content="The music is already being played. You can say other commands such as: pause."/>
+        <prompt id="RES_88" paramcount=0 content="The music has already been paused. You can say other commands such as: play."/>
+        <prompt id="RES_89" paramcount=0 content='Current device does not support "shuffle". You can say other commands such as "play".'/>
+        <prompt id="RES_90" paramcount=0 content='Current status does not support "pause". You can say other commands such as "play".'/>
+        <prompt id="RES_91" paramcount=0 content='Current status does not support "shuffle". You can say other commands such as "play".'/>
+        <prompt id="RES_92" paramcount=0 content='Current status does not support "play previous". You can say other commands such as "play".'/>
+        <prompt id="RES_93" paramcount=0 content='Current status does not support "play next". You can say other commands such as "play".'/>      
+        <prompt id="RES_94" paramcount=0 content="Preparing... Please wait a moment and retry."/>
+        <prompt id="RES_94_SHOW" paramcount=0 content="Preparing... Please wait a moment and retry."/>
+        <prompt id="RES_95" paramcount=0 content="Please choose a device and retry."/> 
+        <prompt id="RES_95_SHOW" paramcount=0 content="Please choose a device and retry."/>        
+        <prompt id="RES_96" paramcount=0 content="Error occurred. Please check in disc screen."/>
+        <prompt id="RES_97" paramcount=0 content="Auto Presetting... Please wait a moment and retry."/>
+        <prompt id="RES_97_SHOW" paramcount=0 content="Auto Presetting... Please wait a moment and retry."/>
+        <prompt id="RES_98" paramcount=0 content="No available Bluetooth Audio device. Please set in Bluetooth Setting."/>
+        <prompt id="RES_99" paramcount=0 content="There is no file available for playback."/>
+        <prompt id="RES_100" paramcount=0 content="No available phone device. Please set in Bluetooth Setting."/>
+        <prompt id="RES_101" paramcount=0 content='Current device does not support "shuffle". You can say other commands such as "pause".'/>
+        <prompt id="RES_102" paramcount=0 content="Please finish disc setting and retry."/>  
+        <prompt id="RES_102_SHOW" paramcount=0 content="Please finish disc setting and retry."/> 
+        <prompt id="RES_103" paramcount=0 content='Current status does not support "play".'/>  
+        <prompt id="RES_104" paramcount=0 content='Current status does not support "pause".'/>  
+        <prompt id="RES_105" paramcount=0 content='Current status does not support "shuffle".'/>  
+        <prompt id="RES_106" paramcount=0 content='Current status does not support "play next".'/>  
+        <prompt id="RES_107" paramcount=0 content='Current status does not support "play previous".'/>  
+        <prompt id="NOLEADINGSILENCE" paramcount=0 content="Please wait a second after the beep and then say the command. "/>
+        <prompt id="BADSNR" paramcount=0 content="Please speak louder. "/>  
+        <prompt id="BADSNR_OVERLOAD" paramcount=0 content="The environment is too noisy. "/>        
+        <prompt id="OVERLOAD" paramcount=0 content="The voice is too loud. "/>
+        <prompt id="TOOQUIET" paramcount=0 content="The voice is too weak. "/>
+        <prompt id="NOSIGNAL" paramcount=0 content="No voice detected. "/>
+        <prompt id="POORMIC" paramcount=0 content="The microphone or the audio hardware is of poor quality. "/>
+    </prompts>
+	<hintscategory>
+		<category>
+			<hint id=0	content="Change source"/>
+			<hint id=1	content="Change source to <source>"/>
+			<hint id=2	content="Source off"/>
+		</category>
+		<category>
+			<hint id=0	content="Shuffle"/>			
+			<hint id=1	content="Play"/>
+			<hint id=2	content="Next song"/>
+			<hint id=3	content="Previous song"/>
+			<hint id=4	content="Pause"/>
+		</category>
+		<category>
+			<hint id=0	visability="album"    content="Play album <album name>"/>
+			<hint id=1	visability="artist"   content="Play artist <artist name>"/>
+			<hint id=2	visability="genre"    content="Play genre <genre name>"/>
+			<hint id=3	visability="playlist" content="Play playlist <playlist name>"/>
+		</category>
+		<category>
+			<hint id=0	visability="hfpcontact" content="Call <contact>"/>
+			<hint id=1	visability="hfpcontact" content="Call <contact> <phonetype>"/>
+			<hint id=2	visability="hfpconnect" content="Call <phone number>"/>
+		</category>
+		<category>
+			<hint id=0	visability="hfpconnect" content="List recent calls"/>
+			<hint id=1	visability="hfpconnect" content="List missed calls"/>
+		</category>		
+		<category>
+			<hint id=0	content="Cancel"/>
+			<hint id=1	content="Back"/>
+			<hint id=2	content="Repeat"/>
+		</category>
+	</hintscategory>
+	<units> 
+		<unit id="RES_M" 	content="m"/> 
+		<unit id="RES_KM" 	content="KM"/> 
+		<unit id="RES_MILE" content="Mile"/> 
+		<unit id="RES_YARD" content="Yard"/> 
+	</units>
+	<sources> 
+		<source id="iPod" 		content="iPod"/> 
+		<source id="USB" 		content="USB"/> 
+		<source id="USB1" 		content="USB1"/> 
+		<source id="USB2" 		content="USB2"/> 
+		<source id="BT-Audio" 	content="Bluetooth Audio"/> 
+		<source id="SD" 		content="SD"/> 
+		<source id="AM" 		content="AM"/> 
+		<source id="FM" 		content="FM"/> 
+		<source id="Disc" 		content="Disc"/> 
+		<source id="DTV" 		content="DTV"/> 
+		<source id="Aux" 		content="AUX"/> 
+		<source id="AUX" 		content="AUX"/> 
+		<source id="VTR" 		content="VTR"/>  
+		<source id="HDMI-In" 	content="HDMI-In"/> 
+	</sources> 
+	<phonetypes> 
+		<phonetype id="RES_MOBILE" 	content="Mobile"/> 
+		<phonetype id="RES_HOME" 	content="Home"/> 
+		<phonetype id="RES_WORK" 	content="Work"/> 
+		<phonetype id="RES_OTHER" 	content="Other"/> 
+		<phonetype id="RES_DEFAULT" content="Default"/> 
+	</phonetypes>
+</config_sds_prompts>
