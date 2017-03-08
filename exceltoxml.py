@@ -8,7 +8,14 @@ import re
 import xml.dom.minidom
 
 
-LANGUAGE_TYPE = ["en","th","pt","es","zh-cn"]
+LANGUAGES_TYPE = ["en","th","pt","es","zh-cn"]
+
+ATTRIBUTES_TYPE = ["id","paramcount","order","visability","content","content_spell"]
+
+NODES_TYPE = ["prompt","hint","unit","source","phonetype"]
+
+FATHER_NODE = ["prompts","hintscategory","category","units","sources","phonetypes"]
+
 class EasyExcel:
   """docstring for EasyExcel"""
   def __init__(self, fileName):
@@ -33,33 +40,50 @@ def matchString(parttern, str):
     return match.group(1)
   return ""
 
-# def addNode(valueID, valueContent):
-#    if -1 != valueID.find("prompt"):
-#       nodePrompt = doc.createElement('prompt')
+def createNode(attrContentList, nodeType):
+  # re: parttern
+  patS = re.compile(r'%s')
+  patID = re.compile(r'_(.+)')
 
-#       listMatch = patS.findall(valueContent)
-#       if "" == len(listMatch):
-#         paraNum = 0
-#       else:
-#         paraNum = len(listMatch)
-      
-#       nodePrompt.setAttribute('paramcount', str(paraNum))
+  node = doc.createElement(nodeType)
+  #  find the number of %s
+  listMatch = patS.findall(attrContentList[1])
+  if "" == len(listMatch):
+    paraNum = 0
+  else:
+    paraNum = len(listMatch)
 
-#       if "" != sheet.cell_value(indexRow, 8):
-#         nodePrompt.setAttribute('order', sheet.cell_value(indexRow, 8))
-#       nodePrompt.setAttribute('content', valueContent)
-    
-#       nodePrompt.setAttribute('id', matchString(patID, valueID))
-#       nodePrompts.appendChild(nodePrompt)
+  #  set the id 
+  node.setAttribute(ATTRIBUTES_TYPE[0], matchString(patID, attrContentList[0]))
+  
+  #  set the attribute, when it is at prompt
+  if nodeType == NODES_TYPE[0]:
+    #  set the paramcount
+    node.setAttribute(ATTRIBUTES_TYPE[1], str(paraNum))
+    if "" != attrContentList[2]:
+      #  set the order
+      node.setAttribute(ATTRIBUTES_TYPE[2], attrContentList[2])
+    #  set the content
+    node.setAttribute(ATTRIBUTES_TYPE[4], attrContentList[1])
+  else:
+    #  set the visability    
+    if "" != attrContentList[3]:
+      node.setAttribute(ATTRIBUTES_TYPE[3], attrContentList[3])
+    #  set the content
+    node.setAttribute(ATTRIBUTES_TYPE[4], attrContentList[1])
+    #  set the content_spell
+    if "" != attrContentList[4]:
+      node.setAttribute(ATTRIBUTES_TYPE[5], attrContentList[4])
+
+  return node
 
 if __name__ == "__main__":
 
-  #在内存中创建一个空的文档
+  #creat document
   doc = xml.dom.minidom.Document() 
-  #创建一个根节点Managers对象
+  #creat the root
   root = doc.createElement('config_sds_prompts') 
-
-  #将根节点添加到文档对象中
+  #add this root to the document
   doc.appendChild(root)
   
   fileName = "Angola_stringID_out.xls"
@@ -69,103 +93,56 @@ if __name__ == "__main__":
   excelForPrompts = EasyExcel(fileName)
   sheet = excelForPrompts.setSheet(sheetName)
 
+  
   #create the father element
-  nodePrompts = doc.createElement('prompts')
+  nodePrompts = doc.createElement(FATHER_NODE[0])
   root.appendChild(nodePrompts);
 
-  nodeHints = doc.createElement('hintscategory')
+  nodeHints = doc.createElement(FATHER_NODE[1])
   root.appendChild(nodeHints);
 
-  nodeUnits = doc.createElement('units')
+  nodeUnits = doc.createElement(FATHER_NODE[3])
   root.appendChild(nodeUnits) 
 
-  nodeSources = doc.createElement('sources')
+  nodeSources = doc.createElement(FATHER_NODE[4])
   root.appendChild(nodeSources)
 
-  nodePhonetypes = doc.createElement('phonetypes')
+  nodePhonetypes = doc.createElement(FATHER_NODE[5])
   root.appendChild(nodePhonetypes)
   
   #create the child element and attribute
   indexRow = 1
-  patS = re.compile(r'%s')
-  patID = re.compile(r'_(\w+)')  
   while indexRow < sheet.nrows:
-    
     #traverse the specific column:
     valueID = sheet.cell_value(indexRow, 0)
     valueContent = sheet.cell_value(indexRow, 2)
     valueOrder = sheet.cell_value(indexRow, 8)
     valueVisability = sheet.cell_value(indexRow, 9)
     valueContentSpell = sheet.cell_value(indexRow, 10)
-
-    if -1 != valueID.find("prompt"):
-      nodePrompt = doc.createElement('prompt')
-
-      listMatch = patS.findall(valueContent)
-      if "" == len(listMatch):
-        paraNum = 0
-      else:
-        paraNum = len(listMatch)
-      nodePrompt.setAttribute('paramcount', str(paraNum))
-      if "" != sheet.cell_value(indexRow, 8):
-        nodePrompt.setAttribute('order', valueOrder)  #en is 8, else is 5
-      # if "" != valueVisability:
-      #   nodeHint.setAttribute('visability', valueVisability)
-      # if "" != valueContentSpell:
-      #   nodeHint.setAttribute('content_spell', valueContentSpell)
-      nodePrompt.setAttribute('content', valueContent)
-      nodePrompt.setAttribute('id', matchString(patID, valueID))
-
+    attrContentList = [valueID,valueContent,valueOrder,valueVisability,valueContentSpell]
+    
+    # accord to the type of node, to create corresponding node
+    if -1 != valueID.find(NODES_TYPE[0]):
+      nodePrompt = createNode(attrContentList, NODES_TYPE[0])
       nodePrompts.appendChild(nodePrompt)
-    
-    if -1 != valueID.find('hint'):
-      if -1 != valueID.find('hint_0'):
-        nodeCategory = doc.createElement('category')
+    elif -1 != valueID.find(NODES_TYPE[1]):
+      if -1 != valueID.find(NODES_TYPE[1]+'_0'):
+        nodeCategory = doc.createElement(FATHER_NODE[2])
         nodeHints.appendChild(nodeCategory)
-
-      nodeHint = doc.createElement('hint')
-
-      nodeHint.setAttribute('id', matchString(patID, valueID))
-      if "" != valueVisability:
-        nodeHint.setAttribute('visability', valueVisability)
-      if "" != valueContentSpell:
-        nodeHint.setAttribute('content_spell', valueContentSpell)
-      nodeHint.setAttribute('content', valueContent)
-
+      nodeHint = createNode(attrContentList, NODES_TYPE[1])
       nodeCategory.appendChild(nodeHint)
-
-    if -1 != valueID.find('unit'):
-      nodeUnit = doc.createElement('unit')
-      nodeUnit.setAttribute('id', matchString(patID, valueID))
-      nodeUnit.setAttribute('content', valueContent)
-      if "" != valueVisability:
-        nodeUnit.setAttribute('visability', valueVisability)
-      if "" != valueContentSpell:
-        nodeUnit.setAttribute('content_spell', valueContentSpell)
+    elif -1 != valueID.find(NODES_TYPE[2]):
+      nodeUnit = createNode(attrContentList, NODES_TYPE[2])
       nodeUnits.appendChild(nodeUnit)
-
-    if -1 != valueID.find('source'):
-      nodeSource = doc.createElement('source')
-      nodeSource.setAttribute('id', matchString(patID, valueID))
-      nodeSource.setAttribute('content', valueContent)
-      if "" != valueVisability:
-        nodeSource.setAttribute('visability', valueVisability)
-      if "" != valueContentSpell:
-        nodeSource.setAttribute('content_spell', valueContentSpell)
+    elif -1 != valueID.find(NODES_TYPE[3]):
+      nodeSource = createNode(attrContentList, NODES_TYPE[3])
       nodeSources.appendChild(nodeSource)
-
-    if -1 != valueID.find('phonetype'):
-      nodePhonetype = doc.createElement('phonetype')
-      nodePhonetype.setAttribute('id', matchString(patID, valueID))
-      nodePhonetype.setAttribute('content', valueContent)
-      if "" != valueVisability:
-        nodePhonetype.setAttribute('visability', valueVisability)
-      if "" != valueContentSpell:
-        nodePhonetype.setAttribute('content_spell', valueContentSpell)
+    elif -1 != valueID.find(NODES_TYPE[4]):
+      nodePhonetype = createNode(attrContentList, NODES_TYPE[4])
       nodePhonetypes.appendChild(nodePhonetype)
-    
+
     indexRow += 1
-  
+
   #create xml
   fp = open('config_sds_prompts.xml', 'w')
   doc.writexml(fp, addindent='\t', newl='\n', encoding="utf-8")
