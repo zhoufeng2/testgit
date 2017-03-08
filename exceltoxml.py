@@ -62,7 +62,7 @@ if __name__ == "__main__":
   #将根节点添加到文档对象中
   doc.appendChild(root)
   
-  fileName = "excel_for_prompts.xls"
+  fileName = "Angola_stringID_out.xls"
   sheetName = "en"
 
   #read the excel and locate the sheet
