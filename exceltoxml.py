@@ -1,9 +1,12 @@
 #! /usr/bin/env python
 #encoding=utf-8
 
+# version2..7+
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+
+if "3" != sys.version[0:1]:
+  reload(sys)
+  sys.setdefaultencoding('utf-8')
 
 import os
 import xlrd
@@ -215,6 +218,8 @@ if __name__ == "__main__":
     filename = area + INPUT_EXCEL
     if os.path.exists(filename):
       createXML(filename, area)
+    else:
+      print("******No excel for " + area + " ******")
       
   
 
