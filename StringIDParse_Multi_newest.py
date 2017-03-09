@@ -65,6 +65,8 @@ LANGUAGES_TYPE = [
 
 XML_LABLE = ["prompt","hint","unit","source","phonetype"]
 
+SPECIAL_CONTENT = "Not to match"
+
 #newSheetItem = ["XML_id","String ID","XML_content",""]
 
 DATAFLIE = ["data avx","data id","data in","data my","data pk","data th","data sg","data vn"]
@@ -259,7 +261,7 @@ class EasyExcel:
             return lisStr
         
        # print(contentStr)
-        element = LanguageGather(xml_id,"Not to match",xmlOrignalContent,"Not to match")
+        element = LanguageGather(xml_id,"SPECIAL_CONTENT",xmlOrignalContent,"SPECIAL_CONTENT")
         lisStr  = element.getString()
         if 1 == len(exsitSheet):
             lisStr.append(4*"")
@@ -331,7 +333,7 @@ class EasyExcel:
                 lisStr.append(tempElementList[6])
             return lisStr
         
-        element = LanguageGather(xml_id,"Not to match",xmlOrignalContent,"Not to match")
+        element = LanguageGather(xml_id,"SPECIAL_CONTENT",xmlOrignalContent,"SPECIAL_CONTENT")
         lisStr  = element.getString()
         if 1 == len(exsitSheet):
             lisStr.append(4*"")
@@ -397,7 +399,7 @@ def matchStringID(newSheetItem,specFile,countryName):
                 newSheetItem.pop()
                 newSheetItem.pop()
                 newSheetItem.pop()
-            print("***" + sheetName + "***")
+            print("###" + sheetName + "###")
     return exsitSheet
 
 def compareStringID(exsitSheet):
@@ -443,7 +445,10 @@ def compareStringID(exsitSheet):
             compareexcel.writeSheet(0, xml_id_list)
         else:
             for sheetName in exsitSheet:
+                #  check the _out.xls
                 cursheet = xlBook.sheet_by_name(sheetName)
+
+                #  
                 for rowIter in range(cursheet.nrows):
                     if current_xml_id == cursheet.cell_value(rowIter, 0):
                         xml_id_list.append(cursheet.cell_value(rowIter, 1))
@@ -451,10 +456,9 @@ def compareStringID(exsitSheet):
                 if rowIter == (cursheet.nrows -1) and current_xml_id != cursheet.cell_value(rowIter, 0):
                     xml_id_list.append("No this XML_id")
 
-            #current_xml_id = current_xml_id[:(len(current_xml_id)-2)]     #还原数字id<category>
                     
             num = xml_id_list.count(xml_id_list[0])
-            indexEn = [idx for idx, strNoMatch in enumerate(xml_id_list) if strNoMatch == "Not to match"]
+            indexEn = [idx for idx, strNoMatch in enumerate(xml_id_list) if strNoMatch == "SPECIAL_CONTENT"]
                      
             xml_id_list.insert(0,current_xml_id)
             if 0 != len(indexEn)  or num != len(exsitSheet):
@@ -503,7 +507,10 @@ def cmopare_sds_prompt_to_excel(xmlFile,lanuageStr,exsitSheet):
 
         xmlID = lineStr["id"]
         xmlID = str(xmlID)
-    
+
+        if "0" == xmlID:
+            numInsertIndex += 1 
+        
         #order、visability和content_spell字段内容获取
         pattern = re.compile(r'order="(\w+)"')
         xmlOrder = searchString(pattern, lineStr)
@@ -517,7 +524,11 @@ def cmopare_sds_prompt_to_excel(xmlFile,lanuageStr,exsitSheet):
         #识别type
         pattern = re.compile(r'<(\w+)')
         nodeType = searchString(pattern, lineStr)
-        xmlID = nodeType + "_" + xmlID
+        if nodeType == XML_LABLE[1]:
+            xmlID = nodeType + str(numInsertIndex-1) + "_" + xmlID
+        else:
+            xmlID = nodeType + "_" + xmlID
+            
         xmlContent = patC.sub('重', xmlContent)
         TempLineStr = str(lineStr)
        
@@ -533,7 +544,6 @@ def cmopare_sds_prompt_to_excel(xmlFile,lanuageStr,exsitSheet):
             analyzeExcel.writeSheet(index,listStr)
             index += 1
 
-            
     sdsFile.close()
 
 
@@ -591,7 +601,3 @@ if __name__ == "__main__":
         else:
             print("No this *config*.xls")
 
-
-
-
-    
