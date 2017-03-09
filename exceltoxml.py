@@ -177,7 +177,8 @@ def createXML(filename, area):
         setNodeAttribute(attrContentList, NODES_TYPE[0], nodePrompt)
         nodePrompts.appendChild(nodePrompt)
       elif -1 != valueID.find(NODES_TYPE[1]):
-        if -1 != valueID.find(NODES_TYPE[1]+'_0'):
+        #  hint id need start from 0
+        if -1 != valueID.find('_0'):
           nodeCategory = doc.createElement(FATHER_NODE[2])
           nodeHints.appendChild(nodeCategory)
         nodeHint = doc.createElement(NODES_TYPE[1])
