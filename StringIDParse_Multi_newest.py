@@ -56,7 +56,7 @@ vietnamese = 6
 arabic = 7
 mandarin = 8
 
-languages = [
+LANGUAGES_TYPE = [
     "en",
     "th",
     "pt",
@@ -65,9 +65,7 @@ languages = [
 
 XML_LABLE = ["prompt","hint","unit","source","phonetype"]
 
-newSheetItem = ["XML_id","String ID","XML_content",""]
-
-xmlid = 0
+#newSheetItem = ["XML_id","String ID","XML_content",""]
 
 DATAFLIE = ["data avx","data id","data in","data my","data pk","data th","data sg","data vn"]
 
@@ -75,13 +73,13 @@ DATAFLIE = ["data avx","data id","data in","data my","data pk","data th","data s
 #对应out表en中的列
 STRING_ID_OUT = {"en":3,"th":4,"pt":5,"es":6,"zh-cn":7}
 
-languagesMatch = {"en":"UK English-Full",
+LANGUAGES_MATCH = {"en":"UK English-Full",
     "th":"Thai-Full",
     "pt":"Portuguese_Full",
     "es":"Spanish_full",
     "zh-cn":"Mandarin_Full"}
 
-areaItem = [
+AREA_ITEM = [
     "Angola",
     "Argentina",
     "Bahrain",
@@ -97,7 +95,8 @@ areaItem = [
     "Kenya",
     "Kuwait",
     "Lebanon",
-    "Lesotho",    "Malaysia",
+    "Lesotho",
+    "Malaysia",
     "Mozambique",
     "Nambia",
     "Namibia",
@@ -237,7 +236,7 @@ class EasyExcel:
                         tempElementList.append(thai_full)
                         tempElementList.append(portuguese_full)
                         tempElementList.append(spanish_full)
-                        tempElementList.append(thai_full)
+                        tempElementList.append(mandarin_full)
                         flage = False
                 #return element
 
@@ -366,14 +365,14 @@ def matchStringID(newSheetItem,specFile,countryName):
     exsitSheet = []
     
     #deal with the different languages
-    for sheetName in languages:
+    for sheetName in LANGUAGES_TYPE:
         xmlFile = specFile + "/" + "config" + "/" + countryName + "/" + sheetName + "/" + "config_sds_prompts.xml"
         
         #if it exists, then do 
         if os.path.exists(xmlFile):
             exsitSheet.append(sheetName)
             newSheetItem.pop()
-            newSheetItem.append(languagesMatch[sheetName])
+            newSheetItem.append(LANGUAGES_MATCH[sheetName])
             analyzeExcel.addSheet(sheetName)
 
             #if it is english 
@@ -461,7 +460,7 @@ def compareStringID(exsitSheet):
             if 0 != len(indexEn)  or num != len(exsitSheet):
                 compareexcel.getSheet(sheetList.index(diffStringID))
                 cursheet = xlBook.sheet_by_index(0)
-                for indexDiff in range(len(languages)):
+                for indexDiff in range(len(LANGUAGES_TYPE)):
                     if indexDiff in indexEn:
                         xml_id_list.append(cursheet.cell_value(index,STRING_ID_OUT[exsitSheet[indexDiff]]))
                     else:
@@ -530,7 +529,7 @@ def cmopare_sds_prompt_to_excel(xmlFile,lanuageStr,exsitSheet):
         listStr.append(xmlOrder)
         listStr.append(xmlVisability)
         listStr.append(xmlContentSpell)
-        if "" != listStr[xmlid]:
+        if "" != listStr[0]:
             analyzeExcel.writeSheet(index,listStr)
             index += 1
 
@@ -543,7 +542,7 @@ if __name__ == "__main__":
     #current_dir = cur_file_dir()
     #print (current_dir)
     
-    countryList = areaItem
+    countryList = AREA_ITEM
     
     specFile = input("input the root-file:")
     newFile = specFile + "＿" + "Areaconfig"
@@ -568,9 +567,10 @@ if __name__ == "__main__":
     comCmdFileName = "16cyTMAP_func_8_02_VoiceRecog_CommandList.xlsx"
     comCmdSheetName = "8.02.3 Common Command List"
     comCmdListExcel = EasyExcel(comCmdFileName,comCmdSheetName)
-    
+
     for countryName in countryList:
         print("*******" + countryName + "*********")
+        newSheetItem = ["XML_id","String ID","XML_content",""]
         analyzeExcel = NewExcel()
         exsitSheet = matchStringID(newSheetItem,specFile,countryName)
 
