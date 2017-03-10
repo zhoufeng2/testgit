@@ -22,7 +22,7 @@ STRING_ID_OUT = {"UK English-Full":3,"Thai-Full":4,"Portuguese_Full":5,"Spanish_
 
 KEY_WORD = "Not to match"
 
-EXCEL_FIELD = {"XML_id":0,"StringID":1,"XML_content":2}
+EXCEL_FIELD = {"XML_ID":0,"StringID":1,"XML_content":2}
 
 OUT_EXCEL = "_stringID_out.xls"
 
@@ -135,7 +135,7 @@ def diffExcel(fileName, area, fileDir):
         for NotMatch in outSheet.col_values(1):
             
             if NotMatch == KEY_WORD:
-                XML_id = outSheet.cell_value(notMatchIndex, EXCEL_FIELD["XML_id"])
+                XML_id = outSheet.cell_value(notMatchIndex, EXCEL_FIELD["XML_ID"])
                 XML_content = outSheet.cell_value(notMatchIndex, EXCEL_FIELD["XML_content"])
 
                 # the first sheet is basic
@@ -154,8 +154,8 @@ def diffExcel(fileName, area, fileDir):
                     diffExcel.writeSheet(index, listToWrite)
                     index += 1
             notMatchIndex += 1
-                
     diffExcel.saveExcel(fileDir + "/" + area + "_diff.xls")
+    print("*** " +  area + " *** is ok")
     
 if __name__ == "__main__":
     print("Analyze start!")
@@ -169,8 +169,8 @@ if __name__ == "__main__":
             fileName = fileDir + "/" + area + OUT_EXCEL
             if os.path.exists(fileName):
                 diffExcel(fileName, area, fileDir)
-            else:
-                print("***No " + area + " excel***")
+            #else:
+                #print("***No " + area + " excel***")
     else:
         print("***No " + fileDir + " directory***")
           
