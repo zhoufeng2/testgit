@@ -207,9 +207,10 @@ def createXML(filename, area):
         os.makedirs(fileRoad)
 
     #create xml
-    fp = open(fileRoad +  '/' + OUT_CONFIG_NAME + '.xml', 'w')
+    fp = open(fileRoad +  '/' + OUT_CONFIG_NAME + '.xml', 'w', encoding="utf-8")
     doc.writexml(fp, addindent='\t', newl='\n', encoding="utf-8")
-    fp.close() 
+    fp.close()
+    print("this " + area + " is transformed ok ")
 
 if __name__ == "__main__":
 
@@ -219,8 +220,8 @@ if __name__ == "__main__":
     filename = area + INPUT_EXCEL
     if os.path.exists(filename):
       createXML(filename, area)
-    else:
-      print("******No excel for " + area + " ******")
+    #else:
+    #  print("******No excel for " + area + " ******")
       
   
 
