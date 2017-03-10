@@ -11,6 +11,7 @@ if "3" != sys.version[0:1]:
 import os
 import xlrd
 import re
+import codecs
 import xml.dom.minidom
 
 
@@ -207,7 +208,7 @@ def createXML(filename, area):
         os.makedirs(fileRoad)
 
     #create xml
-    fp = open(fileRoad +  '/' + OUT_CONFIG_NAME + '.xml', 'w', encoding="utf-8")
+    fp = codecs.open(fileRoad +  '/' + OUT_CONFIG_NAME + '.xml', 'w', encoding="utf-8")
     doc.writexml(fp, addindent='\t', newl='\n', encoding="utf-8")
     fp.close()
     print("this " + area + " is transformed ok ")
