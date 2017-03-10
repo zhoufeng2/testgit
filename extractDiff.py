@@ -159,8 +159,8 @@ def diffExcel(fileName, area, fileDir):
     
 if __name__ == "__main__":
     print("Analyze start!")
-
-    specFile = input("input the Excel-file:")
+    print("please input one of the [data avx | data id | data in | data my | data pk | data th | data sg | data vn], which you will deal with!!")
+    specFile = input("Input : ")
     specFile = ''.join(specFile.split())
     fileDir = specFile +"Excel"
 
