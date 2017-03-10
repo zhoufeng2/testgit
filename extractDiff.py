@@ -26,10 +26,6 @@ EXCEL_FIELD = {"XML_id":0,"StringID":1,"XML_content":2}
 
 OUT_EXCEL = "_stringID_out.xls"
 
-FILE_DIRECTORY = "dataAvxExcel"
-
-OUT_DIR = "diff"
-
 AREA_ITEM = [
     "Angola",
     "Argentina",
@@ -124,7 +120,7 @@ def matchString(parttern, str):
         return match.group(1)
     return ""
 
-def diffExcel(fileName, area):
+def diffExcel(fileName, area, fileDir):
     stringIDOutBook = EasyExcel(fileName)
     diffExcel = NewExcel()
     for sheetName in stringIDOutBook.getSheets():
@@ -139,14 +135,14 @@ def diffExcel(fileName, area):
         for NotMatch in outSheet.col_values(1):
             
             if NotMatch == KEY_WORD:
-                XML_id = outSheet.cell_value(notMatchIndex, EXCEL_FIELD[0])
-                XML_content = outSheet.cell_value(notMatchIndex, EXCEL_FIELD[2])
+                XML_id = outSheet.cell_value(notMatchIndex, EXCEL_FIELD["XML_id"])
+                XML_content = outSheet.cell_value(notMatchIndex, EXCEL_FIELD["XML_content"])
 
                 # the first sheet is basic
                 outSheet = stringIDOutBook.setSheetbyID(0)
                 try:
                     idIndex = outSheet.col_values(0).index(XML_id)
-                    StringID = outSheet.cell_value(idIndex, EXCEL_FIELD[1])
+                    StringID = outSheet.cell_value(idIndex, EXCEL_FIELD["StringID"])
                     StringID_content = outSheet.cell_value(idIndex, STRING_ID_OUT[LANGUAGES_MATCH[sheetName.name]])
                 except Exception:
                     StringID = KEY_WORD
@@ -159,18 +155,24 @@ def diffExcel(fileName, area):
                     index += 1
             notMatchIndex += 1
                 
-    diffExcel.saveExcel(OUT_DIR + "/" + area + "_diff.xls")
+    diffExcel.saveExcel(fileDir + "/" + area + "_diff.xls")
     
 if __name__ == "__main__":
     print("Analyze start!")
-    if os.path.exists(OUT_DIR):
-        pass
+
+    specFile = input("input the Excel-file:")
+    specFile = ''.join(specFile.split())
+    fileDir = specFile +"Excel"
+
+    if os.path.exists(fileDir):
+        for area in AREA_ITEM:
+            fileName = fileDir + "/" + area + OUT_EXCEL
+            if os.path.exists(fileName):
+                diffExcel(fileName, area, fileDir)
+            else:
+                print("***No " + area + " excel***")
     else:
-        os.mkdir(OUT_DIR)
-    for area in AREA_ITEM:
-        fileName = FILE_DIRECTORY + "/" + area + OUT_EXCEL
-        if os.path.exists(fileName):
-            diffExcel(fileName, area)
+        print("***No " + fileDir + " directory***")
           
         
         
