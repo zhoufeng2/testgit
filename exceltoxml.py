@@ -27,6 +27,8 @@ INPUT_EXCEL = "_stringID_out.xls"
 
 OUT_CONFIG_NAME = "config_sds_prompts"
 
+EXCEL_FIELD = {"XML_id":0,"StringID":1,"content":2,"order":3,"visability":4,"content_spell":5}
+
 AREA_ITEM = [
     "Angola",
     "Argentina",
@@ -165,8 +167,8 @@ def createXML(filename, area):
     indexRow = 1
     while indexRow < sheet.nrows:
       #traverse the specific column:
-      valueID = sheet.cell_value(indexRow, 0)
-      valueContent = sheet.cell_value(indexRow, 2)
+      valueID = sheet.cell_value(indexRow, EXCEL_FIELD["XML_id"])
+      valueContent = sheet.cell_value(indexRow, EXCEL_FIELD["content"])
       valueOrder = sheet.cell_value(indexRow, 4)
       valueVisability = sheet.cell_value(indexRow, 5)
       valueContentSpell = sheet.cell_value(indexRow, 6)
