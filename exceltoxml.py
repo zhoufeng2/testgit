@@ -4,7 +4,7 @@
 # version2..7+
 import sys
 
-if "3" != sys.version[0:1]:
+if "2" == sys.version[0:1]:
   reload(sys)
   sys.setdefaultencoding('utf-8')
 
