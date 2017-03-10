@@ -555,7 +555,8 @@ if __name__ == "__main__":
     countryList = AREA_ITEM
     
     specFile = input("input the root-file:")
-    newFile = specFile + "＿" + "Areaconfig"
+    newFile = ''.join(specFile.split()) + "Excel"
+
     if os.path.exists(newFile):
         pass
     else:
@@ -591,13 +592,13 @@ if __name__ == "__main__":
         if 0 != len(exsitSheet):
             analyzeExcel.saveExcel(fileName)
             
-            xlBook = xlrd.open_workbook(fileName)
-            compareexcel = NewExcel()
-            compareStringID(exsitSheet)
-            fileName = newFile + '/' + countryName + "_" +  "stringID_compare.xls"
-            if os.path.exists(fileName):
-                os.remove(fileName)
-            compareexcel.saveExcel(fileName)   
+            # xlBook = xlrd.open_workbook(fileName)
+            # compareexcel = NewExcel()
+            # compareStringID(exsitSheet)
+            # fileName = newFile + '/' + countryName + "_" +  "stringID_compare.xls"
+            # if os.path.exists(fileName):
+            #     os.remove(fileName)
+            # compareexcel.saveExcel(fileName)   
         else:
             print("No this *config*.xls")
 
