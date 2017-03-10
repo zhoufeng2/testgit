@@ -261,7 +261,7 @@ class EasyExcel:
             return lisStr
         
        # print(contentStr)
-        element = LanguageGather(xml_id,"SPECIAL_CONTENT",xmlOrignalContent,"SPECIAL_CONTENT")
+        element = LanguageGather(xml_id,SPECIAL_CONTENT,xmlOrignalContent,SPECIAL_CONTENT)
         lisStr  = element.getString()
         if 1 == len(exsitSheet):
             lisStr.append(4*"")
@@ -333,7 +333,7 @@ class EasyExcel:
                 lisStr.append(tempElementList[6])
             return lisStr
         
-        element = LanguageGather(xml_id,"SPECIAL_CONTENT",xmlOrignalContent,"SPECIAL_CONTENT")
+        element = LanguageGather(xml_id,SPECIAL_CONTENT,xmlOrignalContent,SPECIAL_CONTENT)
         lisStr  = element.getString()
         if 1 == len(exsitSheet):
             lisStr.append(4*"")
@@ -458,7 +458,7 @@ def compareStringID(exsitSheet):
 
                     
             num = xml_id_list.count(xml_id_list[0])
-            indexEn = [idx for idx, strNoMatch in enumerate(xml_id_list) if strNoMatch == "SPECIAL_CONTENT"]
+            indexEn = [idx for idx, strNoMatch in enumerate(xml_id_list) if strNoMatch == SPECIAL_CONTENT]
                      
             xml_id_list.insert(0,current_xml_id)
             if 0 != len(indexEn)  or num != len(exsitSheet):

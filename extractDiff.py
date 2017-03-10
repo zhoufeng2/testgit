@@ -1,14 +1,6 @@
 #! /usr/bin/env python
 #encoding=utf-8
 
-
-# diff excel：字段XML_id、StringID、XML_content、对应的语言的Content
-#  1.从compare表中的Diffent_all_languages第二列开始,抽出--前面的语言language，判断--后面如果是StringID，则继续查询，并扫面每行
-# if StringID == Not to match:
-#     1.从Diffent_all_languages抽出XML_id，StringID, 对应语言的content
-#     2.从out表对应的语言表中抽出XML_content，从en表中抽出对应的语言content
-#     3.保存在Different中的对应的语言中
-
 import sys
 # version2.7+
 if "3" != sys.version[0:1]:
@@ -28,6 +20,58 @@ LANGUAGES_MATCH = {"en":"UK English-Full",
 
 STRING_ID_OUT = {"UK English-Full":3,"Thai-Full":4,"Portuguese_Full":5,"Spanish_full":6,"Mandarin_Full":7}
 
+KEY_WORD = "Not to match"
+
+EXCEL_FIELD = {"XML_id":0,"StringID":1,"XML_content":2}
+
+OUT_EXCEL = "_stringID_out.xls"
+
+FILE_DIRECTORY = "dataAvxExcel"
+
+OUT_DIR = "diff"
+
+AREA_ITEM = [
+    "Angola",
+    "Argentina",
+    "Bahrain",
+    "Botswana",
+    "Brazil",
+    "Brunei",
+    "Cook Island",
+    "Default",
+    "Fiji",
+    "India",
+    "Indonesia",
+    "Jordan",
+    "Kenya",
+    "Kuwait",
+    "Lebanon",
+    "Lesotho",    
+    "Malaysia",
+    "Mozambique",
+    "Nambia",
+    "Namibia",
+    "New Caledonia",
+    "Oman",
+    "P.N.Guinea",
+    "Philippines",
+    "Qatar",
+    "Saudi Arabi",
+    "Singapore",
+    "Solomon Island",
+    "South Africa",
+    "Swaziland",
+    "Tahiti",
+    "Thailand",
+    "Tonga",
+    "U.A.E",
+    "Vanuatu",
+    "Vietnam",
+    "W.Samoa",
+    "Zambia",
+    "Zimbabwe",
+    "pakistan"]
+
 class EasyExcel:
     """docstring for EasyExcel"""
     def __init__(self, fileName):
@@ -43,6 +87,8 @@ class EasyExcel:
 
     def setSheet(self, sheetName):
         return self.xlBook.sheet_by_name(sheetName)
+    def setSheetbyID(self, index):
+        return self.xlBook.sheet_by_index(index)
 
     def getSheets(self):
         return self.xlBook.sheets()
@@ -78,47 +124,56 @@ def matchString(parttern, str):
         return match.group(1)
     return ""
 
+def diffExcel(fileName, area):
+    stringIDOutBook = EasyExcel(fileName)
+    diffExcel = NewExcel()
+    for sheetName in stringIDOutBook.getSheets():
+    
+        listToWrite = ["XML_ID","StringID",LANGUAGES_MATCH[sheetName.name],"XML_content"]
+        diffExcel.addSheet(sheetName.name)
+        diffExcel.writeSheet(0, listToWrite)
+        outSheet = stringIDOutBook.setSheet(sheetName.name)
 
+        index = 1
+        notMatchIndex = 0
+        for NotMatch in outSheet.col_values(1):
+            
+            if NotMatch == KEY_WORD:
+                XML_id = outSheet.cell_value(notMatchIndex, EXCEL_FIELD[0])
+                XML_content = outSheet.cell_value(notMatchIndex, EXCEL_FIELD[2])
+
+                # the first sheet is basic
+                outSheet = stringIDOutBook.setSheetbyID(0)
+                try:
+                    idIndex = outSheet.col_values(0).index(XML_id)
+                    StringID = outSheet.cell_value(idIndex, EXCEL_FIELD[1])
+                    StringID_content = outSheet.cell_value(idIndex, STRING_ID_OUT[LANGUAGES_MATCH[sheetName.name]])
+                except Exception:
+                    StringID = KEY_WORD
+                    StringID_content = KEY_WORD
+
+                outSheet = stringIDOutBook.setSheet(sheetName.name)
+                if -1 == XML_content.find("n=spell"):
+                    listToWrite = [XML_id,StringID,StringID_content,XML_content]
+                    diffExcel.writeSheet(index, listToWrite)
+                    index += 1
+            notMatchIndex += 1
+                
+    diffExcel.saveExcel(OUT_DIR + "/" + area + "_diff.xls")
+    
 if __name__ == "__main__":
     print("Analyze start!")
-    
-    compareFileName = "Angola_stringID_compare.xls"
-    outFileName = "Angola_stringID_out.xls"
-
-    compareBook = EasyExcel(compareFileName)
-    cmpSheet = compareBook.setSheet("Diffent_all_languages")
-
-    stringIDOutBook = EasyExcel(outFileName)
-
-    diffExcel = NewExcel()
-
-    for languageStringID in cmpSheet.row_values(0):
-        print(languageStringID)
-        if -1 != languageStringID.find("--"):
-            parttern = re.compile(r'(\w+)--')
-            language = matchString(parttern, languageStringID)
-            listToWrite = ["XML_ID","String_ID","Language_content","XML_content"]
-            diffExcel.addSheet(language)
-            print(language)
-            diffExcel.writeSheet(0, listToWrite)
-            index = 1
-            for XML_id in cmpSheet.col_values(0):
-                StringID = cmpSheet.cell_value(index, 1)
-                outSheet = stringIDOutBook.setSheet('en')
-                outRowIndex = 1
-                idIndex = outSheet.col_values(0).index(XML_id)
-                
-                XML_content = outSheet.cell_value(idIndex, 2)
-                outSheet = stringIDOutBook.setSheet(language)
-
-                idIndex = outSheet.col_values(0).index(XML_id)
-                StringID_content = outSheet.cell_value(idIndex, STRING_ID_OUT[LANGUAGES_MATCH[language]])
-                        
-                listToWrite = [XML_id,StringID,StringID_content,XML_content]
-                diffExcel.writeSheet(index, listToWrite)
-                index += 1
-
-    diffExcel.saveExcel("diff.xls")
+    if os.path.exists(OUT_DIR):
+        pass
+    else:
+        os.mkdir(OUT_DIR)
+    for area in AREA_ITEM:
+        fileName = FILE_DIRECTORY + "/" + area + OUT_EXCEL
+        if os.path.exists(fileName):
+            diffExcel(fileName, area)
+          
+        
+        
 
    
 
