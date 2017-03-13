@@ -2,16 +2,11 @@
 #encoding=utf-8
  
 import os
-
+import sys
 #3.x 与 2.x变化比较大
-#2.x
-#import sys
-#reload（sys）
-#sys.setdefaultencoding('utf8')
-
-import imp
-import sys  
-imp.reload(sys)  
+if "2" == sys.version[0:1]:
+  reload(sys)
+  sys.setdefaultencoding('utf-8')
 
 import codecs
 import xml.etree.ElementTree as ET
@@ -305,7 +300,7 @@ class EasyExcel:
 
 class NewExcel:
     def __init__(self):
-        self.workbook = xlwt.Workbook()
+        self.workbook = xlwt.Workbook("utf-8")
         self.count = 0
     def addSheet(self,sheetName):
         self.sheet = self.workbook.add_sheet(sheetName)
