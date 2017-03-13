@@ -64,7 +64,7 @@ SPECIAL_CONTENT = "Not to match"
 
 #newSheetItem = ["XML_id","String ID","XML_content",""]
 
-DATAFLIE = ["data avx","data id","data in","data my","data pk","data th","data sg","data vn"]
+DATAFLIE = {0:"data avx",1:"data id",2:"data in",3:"data my",4:"data pk",5:"data th",6:"data sg",7:"data vn"}
 
 
 #对应out表en中的列
@@ -418,13 +418,19 @@ def cmopare_sds_prompt_to_excel(xmlFile,lanuageStr,exsitSheet):
 
 if __name__ == "__main__":
     print("Analyze start!")
-    print("please input one of the [data avx | data id | data in | data my | data pk | data th | data sg | data vn], which you will deal with!!")
+    print("please input one of the [0:data avx | 1:data id | 2:data in | 3:data my | 4:data pk | 5:data th | 6:data sg | 7:data vn], which you will deal with!!")
     #current_dir = cur_file_dir()
     #print (current_dir)
     
     countryList = AREA_ITEM
     
-    specFile = input("input the root-file:")
+    inputNum = int(input("input the number in the range:"))
+
+    if inputNum in list(DATAFLIE.keys()):
+        specFile = DATAFLIE[inputNum]
+    else:
+        print("ERROR:No this choice")
+        os._exit(0)
     newFile = ''.join(specFile.split()) + "Excel"
 
     if os.path.exists(newFile):

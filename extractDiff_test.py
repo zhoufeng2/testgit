@@ -24,6 +24,8 @@ KEY_WORD = "Not to match"
 
 EXCEL_FIELD = {"XML_ID":0,"StringID":1,"XML_content":2}
 
+DATAFLIE = {0:"data avx",1:"data id",2:"data in",3:"data my",4:"data pk",5:"data th",6:"data sg",7:"data vn"}
+
 OUT_EXCEL = "_stringID_out.xls"
 
 AREA_ITEM = [
@@ -159,8 +161,15 @@ def diffExcel(fileName, area, fileDir):
     
 if __name__ == "__main__":
     print("Analyze start!")
-    print("please input one of the [data avx | data id | data in | data my | data pk | data th | data sg | data vn], which you will deal with!!")
-    specFile = input("Input : ")
+    print("please input one of the [0:data avx | 1:data id | 2:data in | 3:data my | 4:data pk | 5:data th | 6:data sg | 7:data vn], which you will deal with!!")
+
+    inputNum = int(input("input the number in the range:"))
+    if inputNum in list(DATAFLIE.keys()):
+        specFile = DATAFLIE[inputNum]
+    else:
+        print("ERROR:No this choice")
+        os._exit(0)
+    
     specFile = ''.join(specFile.split())
     fileDir = specFile +"Excel"
 
