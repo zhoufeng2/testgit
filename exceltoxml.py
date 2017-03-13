@@ -229,7 +229,7 @@ if __name__ == "__main__":
       outFlieDir = 'config' + '/' + area
       xml = ExcelToXML(inputFileName, outFlieDir)
       xml.createXML()
-      print("this " + area + " is transformed, ok! ")
+      print("excel-" + area + " is transformed, ok! ")
     #else:
     #  print("******No excel for " + area + " ******")
       
