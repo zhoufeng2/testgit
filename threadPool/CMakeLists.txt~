@@ -1,0 +1,4 @@
+PROJECT(MYTH)
+ADD_SUBDIRECTORY(src/public bin)
+ADD_EXECUTABLE(main main.cpp)
+TARGET_LINK_LIBRARIES(main ~/threadpool/build/bin/MTHREAD)

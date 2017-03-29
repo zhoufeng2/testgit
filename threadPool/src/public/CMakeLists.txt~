@@ -1,0 +1,9 @@
+SET(SRC_LIST
+    "../../../threadPool/src/CThread.cpp"  
+    "../../../threadPool/src/CDefaultRunnable.cpp" 
+    "../../../threadPool/src/MyThread.cpp" 
+    "../../../threadPool/src/main.cpp"
+)
+LINK_LIBRARIES("/usr/lib/x86_64-linux-gnu/libpthread.so")
+#ADD_EXECUTABLE(MYTHREAD ${SRC_LIST})
+ADD_LIBRARY(MTHREAD STATIC ${SRC_LIST})

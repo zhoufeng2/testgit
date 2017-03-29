@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/zhoufeng2/threadPool/main.cpp
+unistd.h
+-
+stdio.h
+-
+src/MyThread.h
+/home/zhoufeng2/threadPool/src/MyThread.h
+
+/home/zhoufeng2/threadPool/src/CDefaultRunnable.h
+Runnable.h
+/home/zhoufeng2/threadPool/src/Runnable.h
+CThread.h
+/home/zhoufeng2/threadPool/src/CThread.h
+
+/home/zhoufeng2/threadPool/src/CThread.h
+linux/unistd.h
+-
+pthread.h
+-
+Runnable.h
+/home/zhoufeng2/threadPool/src/Runnable.h
+
+/home/zhoufeng2/threadPool/src/MyThread.h
+CDefaultRunnable.h
+/home/zhoufeng2/threadPool/src/CDefaultRunnable.h
+
+/home/zhoufeng2/threadPool/src/Runnable.h
+

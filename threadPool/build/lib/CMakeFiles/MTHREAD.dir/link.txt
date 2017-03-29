@@ -1,0 +1,2 @@
+/usr/bin/ar cr libMTHREAD.a  CMakeFiles/MTHREAD.dir/__/CDefaultRunnable.o CMakeFiles/MTHREAD.dir/__/CThread.o CMakeFiles/MTHREAD.dir/__/MyThread.o
+/usr/bin/ranlib libMTHREAD.a
